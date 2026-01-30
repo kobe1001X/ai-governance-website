@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Exploring the principles, ethics, and future of AI governance through research and analysis.">
+	<title>AI Governance | Ethics, Policy & Research</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	
+	<style>
+		/* ===================================
+		   CSS Reset & Base Styles
+		   =================================== */
+		* {
+		    margin: 0;
+		    padding: 0;
+		    box-sizing: border-box;
+		}
+
+		:root {
+		    /* Primary Colors */
+		    --primary-color: #2563eb;
+		    --primary-dark: #1e40af;
+		    --primary-light: #3b82f6;
+		    
+		    /* Secondary Colors */
+		    --secondary-color: #0f172a;
+		    --secondary-light: #1e293b;
+		    --secondary-lighter: #334155;
+		    
+		    /* Accent Colors */
+		    --accent-color: #f59e0b;
+		    --accent-light: #fbbf24;
+		    
+		    /* Neutral Colors */
+		    --white: #ffffff;
+		    --gray-50: #f8fafc;
+		    --gray-100: #f1f5f9;
+		    --gray-200: #e2e8f0;
+		    --gray-300: #cbd5e1;
+		    --gray-400: #94a3b8;
+		    --gray-500: #64748b;
+		    --gray-600: #475569;
+		    --gray-700: #334155;
+		    --gray-800: #1e293b;
+		    --gray-900: #0f172a;
+		    
+		    /* Typography */
+		    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		    --font-size-base: 16px;
+		    --line-height-base: 1.6;
+		    
+		    /* Spacing */
+		    --spacing-xs: 0.5rem;
+		    --spacing-sm: 1rem;
+		    --spacing-md: 1.5rem;
+		    --spacing-lg: 2rem;
+		    --spacing-xl: 3rem;
+		    --spacing-2xl: 4rem;
+		    
+		    /* Border Radius */
+		    --radius-sm: 0.375rem;
+		    --radius-md: 0.5rem;
+		    --radius-lg: 0.75rem;
+		    --radius-xl: 1rem;
+		    
+		    /* Shadows */
+		    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+		    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+		    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+		    
+		    /* Transitions */
+		    --transition-fast: 150ms ease-in-out;
+		    --transition-base: 200ms ease-in-out;
+		    --transition-slow: 300ms ease-in-out;
+		}
+
+		html {
+		    scroll-behavior: smooth;
+		}
+
+		body {
+		    font-family: var(--font-primary);
+		    font-size: var(--font-size-base);
+		    line-height: var(--line-height-base);
+		    color: var(--gray-800);
+		    background-color: var(--white);
+		    -webkit-font-smoothing: antialiased;
+		    -moz-osx-font-smoothing: grayscale;
+		}
+
+		/* ===================================
+		   Typography
+		   =================================== */
+		h1, h2, h3, h4, h5, h6 {
+		    font-weight: 600;
+		    line-height: 1.2;
+		    color: var(--gray-900);
+		    margin-bottom: var(--spacing-sm);
+		}
+
+		h1 { font-size: 3rem; }
+		h2 { font-size: 2.25rem; }
+		h3 { font-size: 1.875rem; }
+		h4 { font-size: 1.5rem; }
+		h5 { font-size: 1.25rem; }
+		h6 { font-size: 1.125rem; }
+
+		p {
+		    margin-bottom: var(--spacing-sm);
+		    color: var(--gray-600);
+		}
+
+		a {
+		    color: var(--primary-color);
+		    text-decoration: none;
+		    transition: color var(--transition-fast);
+		}
+
+		a:hover {
+		    color: var(--primary-dark);
+		}
+
+		/* ===================================
+		   Container & Layout
+		   =================================== */
+		.container {
+		    max-width: 1200px;
+		    margin: 0 auto;
+		    padding: 0 var(--spacing-md);
+		}
+
+		/* ===================================
+		   Navigation
+		   =================================== */
+		.navbar {
+		    background: var(--white);
+		    border-bottom: 1px solid var(--gray-200);
+		    position: sticky;
+		    top: 0;
+		    z-index: 1000;
+		    backdrop-filter: blur(10px);
+		    background-color: rgba(255, 255, 255, 0.95);
+		}
+
+		.navbar-container {
+		    max-width: 1200px;
+		    margin: 0 auto;
+		    padding: 0 var(--spacing-md);
+		    display: flex;
+		    align-items: center;
+		    justify-content: space-between;
+		    height: 70px;
+		}
+
+		.navbar-brand .logo {
+		    font-size: 1.5rem;
+		    font-weight: 700;
+		    color: var(--gray-900);
+		    letter-spacing: -0.02em;
+		    transition: color var(--transition-fast);
+		}
+
+		.navbar-brand .logo:hover {
+		    color: var(--primary-color);
+		}
+
+		.navbar-links {
+		    display: flex;
+		    list-style: none;
+		    gap: var(--spacing-sm);
+		    align-items: center;
+		}
+
+		.navbar-links a {
+		    padding: var(--spacing-xs) var(--spacing-sm);
+		    color: var(--gray-600);
+		    font-weight: 500;
+		    font-size: 0.9375rem;
+		    border-radius: var(--radius-md);
+		    transition: all var(--transition-fast);
+		}
+
+		.navbar-links a:hover,
+		.navbar-links a.active {
+		    color: var(--primary-color);
+		    background-color: var(--gray-50);
+		}
+
+		.mobile-menu-toggle {
+		    display: none;
+		    flex-direction: column;
+		    gap: 5px;
+		    background: none;
+		    border: none;
+		    cursor: pointer;
+		    padding: var(--spacing-xs);
+		}
+
+		.mobile-menu-toggle span {
+		    width: 24px;
+		    height: 2px;
+		    background-color: var(--gray-700);
+		    border-radius: 2px;
+		    transition: all var(--transition-base);
+		}
+
+		/* ===================================
+		   Hero Section
+		   =================================== */
+		.hero {
+		    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		    padding: var(--spacing-2xl) var(--spacing-md);
+		    text-align: center;
+		    color: var(--white);
+		}
+
+		.hero-content {
+		    max-width: 800px;
+		    margin: 0 auto;
+		}
+
+		.hero-title {
+		    font-size: 3.5rem;
+		    font-weight: 700;
+		    margin-bottom: var(--spacing-md);
+		    line-height: 1.1;
+		    color: var(--white);
+		}
+
+		.hero-subtitle {
+		    font-size: 1.25rem;
+		    margin-bottom: var(--spacing-xl);
+		    opacity: 0.95;
+		    color: var(--white);
+		    font-weight: 400;
+		}
+
+		.hero-cta {
+		    display: flex;
+		    gap: var(--spacing-sm);
+		    justify-content: center;
+		    flex-wrap: wrap;
+		}
+
+		/* ===================================
+		   Buttons
+		   =================================== */
+		.btn {
+		    display: inline-block;
+		    padding: 0.875rem 2rem;
+		    border-radius: var(--radius-md);
+		    font-weight: 600;
+		    font-size: 1rem;
+		    transition: all var(--transition-base);
+		    cursor: pointer;
+		    border: 2px solid transparent;
+		    text-align: center;
+		}
+
+		.btn-primary {
+		    background-color: var(--white);
+		    color: var(--primary-color);
+		}
+
+		.btn-primary:hover {
+		    transform: translateY(-2px);
+		    box-shadow: var(--shadow-lg);
+		}
+
+		.btn-secondary {
+		    background-color: transparent;
+		    color: var(--white);
+		    border-color: var(--white);
+		}
+
+		.btn-secondary:hover {
+		    background-color: var(--white);
+		    color: var(--primary-color);
+		}
+
+		/* ===================================
+		   Main Content
+		   =================================== */
+		.main-content {
+		    background-color: var(--gray-50);
+		}
+
+		.section-header {
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    margin-bottom: var(--spacing-xl);
+		}
+
+		.section-header.center {
+		    flex-direction: column;
+		    text-align: center;
+		    gap: var(--spacing-sm);
+		}
+
+		.section-subtitle {
+		    font-size: 1.125rem;
+		    color: var(--gray-600);
+		    max-width: 600px;
+		    margin: 0 auto;
+		}
+
+		.view-all {
+		    color: var(--primary-color);
+		    font-weight: 500;
+		    font-size: 0.9375rem;
+		    transition: gap var(--transition-fast);
+		    display: inline-flex;
+		    align-items: center;
+		    gap: 0.25rem;
+		}
+
+		.view-all:hover {
+		    gap: 0.5rem;
+		}
+
+		/* ===================================
+		   Featured Articles Section
+		   =================================== */
+		.featured-section {
+		    padding: var(--spacing-2xl) 0;
+		}
+
+		.article-grid {
+		    display: grid;
+		    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		    gap: var(--spacing-lg);
+		}
+
+		.article-card {
+		    background: var(--white);
+		    border-radius: var(--radius-lg);
+		    padding: var(--spacing-lg);
+		    box-shadow: var(--shadow-sm);
+		    transition: all var(--transition-base);
+		    border: 1px solid var(--gray-200);
+		}
+
+		.article-card:hover {
+		    box-shadow: var(--shadow-lg);
+		    transform: translateY(-4px);
+		}
+
+		.article-meta {
+		    display: flex;
+		    gap: var(--spacing-sm);
+		    margin-bottom: var(--spacing-sm);
+		    align-items: center;
+		}
+
+		.article-category {
+		    background-color: var(--primary-color);
+		    color: var(--white);
+		    padding: 0.25rem 0.75rem;
+		    border-radius: var(--radius-sm);
+		    font-size: 0.8125rem;
+		    font-weight: 600;
+		    text-transform: uppercase;
+		    letter-spacing: 0.5px;
+		}
+
+		.article-date {
+		    color: var(--gray-500);
+		    font-size: 0.875rem;
+		}
+
+		.article-title {
+		    font-size: 1.5rem;
+		    margin-bottom: var(--spacing-sm);
+		    color: var(--gray-900);
+		}
+
+		.article-excerpt {
+		    color: var(--gray-600);
+		    margin-bottom: var(--spacing-md);
+		    line-height: 1.7;
+		}
+
+		.article-link {
+		    color: var(--primary-color);
+		    font-weight: 600;
+		    display: inline-flex;
+		    align-items: center;
+		    gap: 0.25rem;
+		    transition: gap var(--transition-fast);
+		}
+
+		.article-link:hover {
+		    gap: 0.5rem;
+		}
+
+		/* ===================================
+		   Principles Section
+		   =================================== */
+		.principles-section {
+		    padding: var(--spacing-2xl) 0;
+		    background: var(--white);
+		}
+
+		.principles-grid {
+		    display: grid;
+		    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		    gap: var(--spacing-lg);
+		}
+
+		.principle-card {
+		    background: var(--gray-50);
+		    border-radius: var(--radius-lg);
+		    padding: var(--spacing-xl) var(--spacing-lg);
+		    text-align: center;
+		    transition: all var(--transition-base);
+		    border: 1px solid var(--gray-200);
+		}
+
+		.principle-card:hover {
+		    background: var(--white);
+		    box-shadow: var(--shadow-md);
+		    transform: translateY(-4px);
+		}
+
+		.principle-icon {
+		    width: 64px;
+		    height: 64px;
+		    margin: 0 auto var(--spacing-md);
+		    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+		    border-radius: var(--radius-lg);
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		    color: var(--white);
+		}
+
+		.principle-card h3 {
+		    font-size: 1.375rem;
+		    margin-bottom: var(--spacing-sm);
+		    color: var(--gray-900);
+		}
+
+		.principle-card p {
+		    color: var(--gray-600);
+		    line-height: 1.7;
+		}
+
+		/* ===================================
+		   Newsletter Section
+		   =================================== */
+		.newsletter-section {
+		    background: var(--secondary-color);
+		    color: var(--white);
+		    padding: var(--spacing-2xl) var(--spacing-md);
+		}
+
+		.newsletter-content {
+		    max-width: 600px;
+		    margin: 0 auto;
+		    text-align: center;
+		}
+
+		.newsletter-content h2 {
+		    color: var(--white);
+		    margin-bottom: var(--spacing-sm);
+		}
+
+		.newsletter-content p {
+		    color: rgba(255, 255, 255, 0.8);
+		    margin-bottom: var(--spacing-lg);
+		    font-size: 1.125rem;
+		}
+
+		.newsletter-form {
+		    display: flex;
+		    gap: var(--spacing-sm);
+		    max-width: 500px;
+		    margin: 0 auto;
+		}
+
+		.newsletter-form input {
+		    flex: 1;
+		    padding: 0.875rem 1.25rem;
+		    border: 2px solid rgba(255, 255, 255, 0.2);
+		    border-radius: var(--radius-md);
+		    background: rgba(255, 255, 255, 0.1);
+		    color: var(--white);
+		    font-size: 1rem;
+		    transition: all var(--transition-base);
+		}
+
+		.newsletter-form input::placeholder {
+		    color: rgba(255, 255, 255, 0.6);
+		}
+
+		.newsletter-form input:focus {
+		    outline: none;
+		    border-color: var(--white);
+		    background: rgba(255, 255, 255, 0.15);
+		}
+
+		.newsletter-form .btn-primary {
+		    background-color: var(--primary-color);
+		    color: var(--white);
+		    border: none;
+		    white-space: nowrap;
+		}
+
+		.newsletter-form .btn-primary:hover {
+		    background-color: var(--primary-light);
+		}
+
+		/* ===================================
+		   Footer
+		   =================================== */
+		.site-footer {
+		    background: var(--gray-900);
+		    color: var(--gray-400);
+		    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+		}
+
+		.footer-grid {
+		    display: grid;
+		    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		    gap: var(--spacing-xl);
+		    margin-bottom: var(--spacing-xl);
+		}
+
+		.footer-col h3,
+		.footer-col h4 {
+		    color: var(--white);
+		    font-size: 1.125rem;
+		    margin-bottom: var(--spacing-md);
+		}
+
+		.footer-col p {
+		    color: var(--gray-400);
+		    line-height: 1.7;
+		}
+
+		.footer-col ul {
+		    list-style: none;
+		}
+
+		.footer-col ul li {
+		    margin-bottom: var(--spacing-xs);
+		}
+
+		.footer-col a {
+		    color: var(--gray-400);
+		    transition: color var(--transition-fast);
+		}
+
+		.footer-col a:hover {
+		    color: var(--white);
+		}
+
+		.social-links {
+		    display: flex;
+		    gap: var(--spacing-sm);
+		    margin-top: var(--spacing-md);
+		}
+
+		.social-links a {
+		    width: 40px;
+		    height: 40px;
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		    background: rgba(255, 255, 255, 0.1);
+		    border-radius: var(--radius-md);
+		    transition: all var(--transition-base);
+		}
+
+		.social-links a:hover {
+		    background: var(--primary-color);
+		    transform: translateY(-2px);
+		}
+
+		.footer-bottom {
+		    border-top: 1px solid rgba(255, 255, 255, 0.1);
+		    padding-top: var(--spacing-lg);
+		    text-align: center;
+		}
+
+		/* ===================================
+		   Responsive Design
+		   =================================== */
+		@media (max-width: 768px) {
+		    .navbar-links {
+		        position: fixed;
+		        top: 70px;
+		        left: -100%;
+		        width: 100%;
+		        flex-direction: column;
+		        background: var(--white);
+		        padding: var(--spacing-lg);
+		        box-shadow: var(--shadow-xl);
+		        transition: left var(--transition-base);
+		        align-items: stretch;
+		    }
+		    
+		    .navbar-links.active {
+		        left: 0;
+		    }
+		    
+		    .navbar-links a {
+		        padding: var(--spacing-sm);
+		        text-align: center;
+		    }
+		    
+		    .mobile-menu-toggle {
+		        display: flex;
+		    }
+		    
+		    .hero-title {
+		        font-size: 2.5rem;
+		    }
+		    
+		    .hero-subtitle {
+		        font-size: 1.125rem;
+		    }
+		    
+		    h1 { font-size: 2.25rem; }
+		    h2 { font-size: 1.875rem; }
+		    h3 { font-size: 1.5rem; }
+		    
+		    .section-header {
+		        flex-direction: column;
+		        align-items: flex-start;
+		        gap: var(--spacing-sm);
+		    }
+		    
+		    .article-grid,
+		    .principles-grid {
+		        grid-template-columns: 1fr;
+		    }
+		    
+		    .newsletter-form {
+		        flex-direction: column;
+		    }
+		    
+		    .footer-grid {
+		        grid-template-columns: 1fr;
+		    }
+		}
+
+		@media (max-width: 480px) {
+		    .hero {
+		        padding: var(--spacing-xl) var(--spacing-md);
+		    }
+		    
+		    .hero-title {
+		        font-size: 2rem;
+		    }
+		    
+		    .featured-section,
+		    .principles-section {
+		        padding: var(--spacing-xl) 0;
+		    }
+		    
+		    .btn {
+		        padding: 0.75rem 1.5rem;
+		        font-size: 0.9375rem;
+		    }
+		}
+	</style>
+</head>
+<body>
+	<!-- Navigation -->
+	<nav class="navbar">
+		<div class="navbar-container">
+			<div class="navbar-brand">
+				<a href="#" class="logo">AI Governance</a>
+			</div>
+			<button class="mobile-menu-toggle" aria-label="Toggle menu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="navbar-links">
+				<li><a href="#" class="active">Home</a></li>
+				<li><a href="#articles">Articles</a></li>
+				<li><a href="#principles">Principles</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<section class="hero">
+		<div class="hero-content">
+			<h1 class="hero-title">Navigating the Future of AI Governance</h1>
+			<p class="hero-subtitle">Exploring the principles, policies, and ethical frameworks shaping artificial intelligence</p>
+			<div class="hero-cta">
+				<a href="#articles" class="btn btn-primary">Read Articles</a>
+				<a href="#about" class="btn btn-secondary">Learn More</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Main Content -->
+	<main class="main-content">
+		<!-- Featured Articles -->
+		<section class="featured-section" id="articles">
+			<div class="container">
+				<div class="section-header">
+					<h2>Latest Insights</h2>
+					<a href="#" class="view-all">View all articles →</a>
+				</div>
+				<div class="article-grid">
+					<article class="article-card">
+						<div class="article-meta">
+							<span class="article-category">Policy</span>
+							<span class="article-date">Jan 28, 2026</span>
+						</div>
+						<h3 class="article-title">The Evolution of AI Regulation in 2026</h3>
+						<p class="article-excerpt">As governments worldwide grapple with AI oversight, new regulatory frameworks are emerging that balance innovation with accountability...</p>
+						<a href="#" class="article-link">Read more →</a>
+					</article>
+					<article class="article-card">
+						<div class="article-meta">
+							<span class="article-category">Ethics</span>
+							<span class="article-date">Jan 25, 2026</span>
+						</div>
+						<h3 class="article-title">Algorithmic Bias: Detection and Mitigation</h3>
+						<p class="article-excerpt">Understanding how bias enters AI systems and what organizations can do to identify and address it effectively...</p>
+						<a href="#" class="article-link">Read more →</a>
+					</article>
+					<article class="article-card">
+						<div class="article-meta">
+							<span class="article-category">Research</span>
+							<span class="article-date">Jan 22, 2026</span>
+						</div>
+						<h3 class="article-title">Transparency in AI Decision-Making</h3>
+						<p class="article-excerpt">Exploring methods for making AI systems more interpretable and their decisions more explainable to stakeholders...</p>
+						<a href="#" class="article-link">Read more →</a>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- Principles Section -->
+		<section class="principles-section" id="principles">
+			<div class="container">
+				<div class="section-header center">
+					<h2>Core Principles of AI Governance</h2>
+					<p class="section-subtitle">A framework for responsible AI development and deployment</p>
+				</div>
+				<div class="principles-grid">
+					<div class="principle-card">
+						<div class="principle-icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+								<circle cx="12" cy="12" r="3"></circle>
+							</svg>
+						</div>
+						<h3>Transparency</h3>
+						<p>AI systems should be understandable, with clear documentation of their capabilities, limitations, and decision-making processes.</p>
+					</div>
+					<div class="principle-card">
+						<div class="principle-icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+								<circle cx="8.5" cy="7" r="4"></circle>
+								<polyline points="17 11 19 13 23 9"></polyline>
+							</svg>
+						</div>
+						<h3>Accountability</h3>
+						<p>Clear lines of responsibility must be established for AI systems, ensuring organizations and individuals are answerable for outcomes.</p>
+					</div>
+					<div class="principle-card">
+						<div class="principle-icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+								<path d="M2 17l10 5 10-5"></path>
+								<path d="M2 12l10 5 10-5"></path>
+							</svg>
+						</div>
+						<h3>Fairness</h3>
+						<p>AI systems must be designed to avoid discrimination and ensure equitable treatment across diverse populations and use cases.</p>
+					</div>
+					<div class="principle-card">
+						<div class="principle-icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+								<path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+							</svg>
+						</div>
+						<h3>Privacy</h3>
+						<p>AI development and deployment must respect individual privacy rights and protect sensitive personal information.</p>
+					</div>
+					<div class="principle-card">
+						<div class="principle-icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+							</svg>
+						</div>
+						<h3>Safety</h3>
+						<p>AI systems should be robust, secure, and designed to minimize risks to individuals, organizations, and society.</p>
+					</div>
+					<div class="principle-card">
+						<div class="principle-icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+								<circle cx="9" cy="7" r="4"></circle>
+								<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+								<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+							</svg>
+						</div>
+						<h3>Collaboration</h3>
+						<p>Effective AI governance requires cooperation among stakeholders including policymakers, researchers, industry, and civil society.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Newsletter Section -->
+		<section class="newsletter-section">
+			<div class="container">
+				<div class="newsletter-content">
+					<h2>Stay Informed</h2>
+					<p>Subscribe to receive updates on AI governance research, policy developments, and new articles.</p>
+					<form class="newsletter-form">
+						<input type="email" placeholder="Enter your email" required>
+						<button type="submit" class="btn btn-primary">Subscribe</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-grid">
+				<div class="footer-col">
+					<h3>AI Governance</h3>
+					<p>Dedicated to exploring the ethical, legal, and policy dimensions of artificial intelligence.</p>
+				</div>
+				<div class="footer-col">
+					<h4>Quick Links</h4>
+					<ul>
+						<li><a href="#articles">Articles</a></li>
+						<li><a href="#principles">Principles</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Resources</h4>
+					<ul>
+						<li><a href="https://www.oecd.org/going-digital/ai/principles/" target="_blank" rel="noopener">OECD AI Principles</a></li>
+						<li><a href="https://futureoflife.org/ai-principles/" target="_blank" rel="noopener">Asilomar AI Principles</a></li>
+						<li><a href="https://www.europarl.europa.eu/topics/en/article/20230601STO93804/eu-ai-act-first-regulation-on-artificial-intelligence" target="_blank" rel="noopener">EU AI Act</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Connect</h4>
+					<p>Email: <a href="mailto:info@aigovernance.org">info@aigovernance.org</a></p>
+					<div class="social-links">
+						<a href="#" aria-label="Twitter">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+							</svg>
+						</a>
+						<a href="#" aria-label="LinkedIn">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+								<circle cx="4" cy="4" r="2"></circle>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; 2026 AI Governance. All rights reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		// Mobile Menu Toggle
+		document.addEventListener('DOMContentLoaded', function() {
+		    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+		    const navbarLinks = document.querySelector('.navbar-links');
+		    
+		    if (mobileMenuToggle) {
+		        mobileMenuToggle.addEventListener('click', function() {
+		            navbarLinks.classList.toggle('active');
+		            this.classList.toggle('active');
+		        });
+		        
+		        // Close menu when clicking on a link
+		        const navLinks = document.querySelectorAll('.navbar-links a');
+		        navLinks.forEach(link => {
+		            link.addEventListener('click', function() {
+		                navbarLinks.classList.remove('active');
+		                mobileMenuToggle.classList.remove('active');
+		            });
+		        });
+		        
+		        // Close menu when clicking outside
+		        document.addEventListener('click', function(event) {
+		            if (!event.target.closest('.navbar-container')) {
+		                navbarLinks.classList.remove('active');
+		                mobileMenuToggle.classList.remove('active');
+		            }
+		        });
+		    }
+		});
+
+		// Newsletter Form Handler
+		const newsletterForm = document.querySelector('.newsletter-form');
+		if (newsletterForm) {
+		    newsletterForm.addEventListener('submit', function(e) {
+		        e.preventDefault();
+		        const emailInput = this.querySelector('input[type="email"]');
+		        const email = emailInput.value;
+		        
+		        if (email && email.includes('@')) {
+		            alert('Thank you for subscribing! You\'ll receive updates at ' + email);
+		            emailInput.value = '';
+		        }
+		    });
+		}
+
+		// Smooth scroll for anchor links
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		    anchor.addEventListener('click', function (e) {
+		        const href = this.getAttribute('href');
+		        if (href !== '#') {
+		            e.preventDefault();
+		            const target = document.querySelector(href);
+		            if (target) {
+		                target.scrollIntoView({
+		                    behavior: 'smooth',
+		                    block: 'start'
+		                });
+		            }
+		        }
+		    });
+		});
+
+		// Add scroll effect to navbar
+		let lastScroll = 0;
+		const navbar = document.querySelector('.navbar');
+
+		window.addEventListener('scroll', function() {
+		    const currentScroll = window.pageYOffset;
+		    
+		    if (currentScroll > 100) {
+		        navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+		    } else {
+		        navbar.style.boxShadow = 'none';
+		    }
+		    
+		    lastScroll = currentScroll;
+		});
+
+		// Intersection Observer for fade-in animations
+		const observerOptions = {
+		    threshold: 0.1,
+		    rootMargin: '0px 0px -50px 0px'
+		};
+
+		const observer = new IntersectionObserver(function(entries) {
+		    entries.forEach(entry => {
+		        if (entry.isIntersecting) {
+		            entry.target.style.opacity = '1';
+		            entry.target.style.transform = 'translateY(0)';
+		        }
+		    });
+		}, observerOptions);
+
+		// Observe article cards and principle cards
+		document.querySelectorAll('.article-card, .principle-card').forEach(card => {
+		    card.style.opacity = '0';
+		    card.style.transform = 'translateY(20px)';
+		    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+		    observer.observe(card);
+		});
+	</script>
+</body>
+</html>
