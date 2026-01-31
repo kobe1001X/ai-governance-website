@@ -623,6 +623,203 @@
     }
 
     /* ===================================
+       Contact Section Styles
+       =================================== */
+    .contact-section {
+        padding: var(--spacing-2xl) 0;
+        background: var(--gray-50);
+        border-top: 1px solid var(--gray-200);
+    }
+
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-2xl);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-lg);
+    }
+
+    .info-card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        border: 1px solid var(--gray-200);
+        transition: all var(--transition-base);
+    }
+
+    .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .info-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--spacing-md);
+        color: var(--white);
+    }
+
+    .info-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-xs);
+        color: var(--gray-900);
+    }
+
+    .info-card p {
+        color: var(--gray-600);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .info-card a {
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+
+    .info-card a:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+    }
+
+    .info-note {
+        font-size: 0.875rem;
+        color: var(--gray-500);
+        font-style: italic;
+    }
+
+    .contact-form-container {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        border: 1px solid var(--gray-200);
+    }
+
+    .contact-form-container h3 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-lg);
+        color: var(--gray-900);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: var(--spacing-xs);
+        font-weight: 500;
+        color: var(--gray-700);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        border: 1px solid var(--gray-300);
+        border-radius: var(--radius-md);
+        font-family: var(--font-primary);
+        font-size: 1rem;
+        transition: all var(--transition-base);
+        background: var(--white);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .form-group select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23475569' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 16px;
+        padding-right: 2.5rem;
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+
+    .checkbox input[type="checkbox"] {
+        width: auto;
+        margin: 0;
+    }
+
+    .checkbox label {
+        margin: 0;
+        font-weight: normal;
+        color: var(--gray-600);
+    }
+
+    .contact-notes {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        border-left: 4px solid var(--primary-color);
+        margin-top: var(--spacing-xl);
+    }
+
+    .contact-notes p {
+        margin-bottom: var(--spacing-sm);
+        color: var(--gray-600);
+    }
+
+    .contact-notes strong {
+        color: var(--gray-800);
+    }
+
+    .contact-notes a {
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+
+    /* Responsive Design for Contact Section */
+    @media (max-width: 1024px) {
+        .contact-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .contact-info {
+            order: 2;
+        }
+        
+        .contact-form-container {
+            order: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-info {
+            grid-template-columns: 1fr;
+        }
+        
+        .contact-form-container {
+            padding: var(--spacing-lg);
+        }
+    }
+
+    /* ===================================
        Footer
        =================================== */
     .site-footer {
@@ -809,10 +1006,10 @@
 			</button>
 			<ul class="navbar-links">
 				<li><a href="index.html" class="active">Home</a></li>
-				<li><a href="pages/articles.html">Articles</a></li>
-				<li><a href="pages/research.html">Research</a></li>
-				<li><a href="pages/about.html">About</a></li>
-				<li><a href="pages/contact.html">Contact</a></li>
+				<li><a href="#articles">Articles</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#research">Research</a></li>
+				<li><a href="#contact">Contact</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -823,8 +1020,8 @@
 			<h1 class="hero-title">Navigating the Future of AI Governance</h1>
 			<p class="hero-subtitle">Exploring the principles, policies, and ethical frameworks shaping artificial intelligence</p>
 			<div class="hero-cta">
-				<a href="pages/articles.html" class="btn btn-primary">Read Articles</a>
-				<a href="pages/about.html" class="btn btn-secondary">Learn More</a>
+				<a href="#articles" class="btn btn-primary">Read Articles</a>
+				<a href="#about" class="btn btn-secondary">Learn More</a>
 			</div>
 		</div>
 	</section>
@@ -832,11 +1029,11 @@
 	<!-- Main Content -->
 	<main class="main-content">
 		<!-- Featured Articles -->
-		<section class="featured-section">
+		<section class="featured-section" id="articles">
 			<div class="container">
 				<div class="section-header">
 					<h2>Latest Insights</h2>
-					<a href="pages/articles.html" class="view-all">View all articles →</a>
+					<a href="#articles" class="view-all">View all articles →</a>
 				</div>
 				<div class="article-grid">
 					<article class="article-card">
@@ -871,7 +1068,7 @@
 		</section>
 
 		<!-- Principles Section -->
-		<section class="principles-section">
+		<section class="principles-section" id="principles">
 			<div class="container">
 				<div class="section-header center">
 					<h2>Core Principles of AI Governance</h2>
@@ -944,32 +1141,33 @@
 				</div>
 			</div>
 		</section>
-<!-- About Section -->
-<section class="about-section" id="about">
-    <div class="container">
-        <div class="section-header center">
-            <h2>About This Research</h2>
-            <p class="section-subtitle">Understanding AI governance frameworks and their implementation</p>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Research Mission</h3>
-                <p>This platform examines the evolving landscape of artificial intelligence governance, focusing on ethical frameworks, regulatory approaches, and implementation challenges across different sectors and regions.</p>
-                
-                <h3>Key Focus Areas</h3>
-                <ul>
-                    <li>Ethical AI development and deployment</li>
-                    <li>International policy harmonization</li>
-                    <li>Transparency and accountability mechanisms</li>
-                    <li>Risk assessment and mitigation strategies</li>
-                </ul>
-                
-                <h3>Methodology</h3>
-                <p>Our research combines analysis of existing regulations, case studies of AI implementation, and stakeholder interviews to provide comprehensive insights into effective governance practices.</p>
-            </div>
-        </div>
-    </div>
-</section>
+
+		<!-- About Section -->
+		<section class="about-section" id="about">
+			<div class="container">
+				<div class="section-header center">
+					<h2>About This Research</h2>
+					<p class="section-subtitle">Understanding AI governance frameworks and their implementation</p>
+				</div>
+				<div class="about-content">
+					<div class="about-text">
+						<h3>Research Mission</h3>
+						<p>This platform examines the evolving landscape of artificial intelligence governance, focusing on ethical frameworks, regulatory approaches, and implementation challenges across different sectors and regions.</p>
+						
+						<h3>Key Focus Areas</h3>
+						<ul>
+							<li>Ethical AI development and deployment</li>
+							<li>International policy harmonization</li>
+							<li>Transparency and accountability mechanisms</li>
+							<li>Risk assessment and mitigation strategies</li>
+						</ul>
+						
+						<h3>Methodology</h3>
+						<p>Our research combines analysis of existing regulations, case studies of AI implementation, and stakeholder interviews to provide comprehensive insights into effective governance practices.</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!-- Newsletter Section -->
 		<section class="newsletter-section">
@@ -985,54 +1183,154 @@
 			</div>
 		</section>
 	</main>
-<!-- Research Section -->
-<section class="research-section" id="research">
-    <div class="container">
-        <div class="section-header center">
-            <h2>Research & Publications</h2>
-            <p class="section-subtitle">Ongoing studies and published work on AI governance</p>
-        </div>
-        
-        <div class="research-grid">
-            <!-- Research Paper 1 -->
-            <div class="research-card">
-                <div class="research-meta">
-                    <span class="research-category">Policy Analysis</span>
-                    <span class="research-date">January 2026</span>
-                </div>
-                <h3>Comparative Analysis of EU AI Act vs. US Executive Orders</h3>
-                <p class="research-excerpt">Examining alignment and divergence in regulatory approaches between major economic powers and their implications for global AI governance.</p>
-                <a href="#" class="research-link">View Abstract →</a>
-            </div>
-            
-            <!-- Research Paper 2 -->
-            <div class="research-card">
-                <div class="research-meta">
-                    <span class="research-category">Ethical Framework</span>
-                    <span class="research-date">December 2025</span>
-                </div>
-                <h3>Implementing Ethics-by-Design in AI Development</h3>
-                <p class="research-excerpt">Practical guidelines for integrating ethical considerations throughout the AI development lifecycle, from conception to deployment.</p>
-                <a href="#" class="research-link">View Abstract →</a>
-            </div>
-            
-            <!-- Research Paper 3 -->
-            <div class="research-card">
-                <div class="research-meta">
-                    <span class="research-category">Case Study</span>
-                    <span class="research-date">November 2025</span>
-                </div>
-                <h3>Healthcare AI Governance: Lessons from Clinical Implementation</h3>
-                <p class="research-excerpt">Analysis of governance challenges and solutions in medical AI applications, focusing on patient safety and data privacy concerns.</p>
-                <a href="#" class="research-link">View Abstract →</a>
-            </div>
-        </div>
-        
-        <div class="research-cta">
-            <a href="#" class="btn btn-primary">View All Publications</a>
-        </div>
-    </div>
-</section>
+
+	<!-- Research Section -->
+	<section class="research-section" id="research">
+		<div class="container">
+			<div class="section-header center">
+				<h2>Research & Publications</h2>
+				<p class="section-subtitle">Ongoing studies and published work on AI governance</p>
+			</div>
+			
+			<div class="research-grid">
+				<!-- Research Paper 1 -->
+				<div class="research-card">
+					<div class="research-meta">
+						<span class="research-category">Policy Analysis</span>
+						<span class="research-date">January 2026</span>
+					</div>
+					<h3>Comparative Analysis of EU AI Act vs. US Executive Orders</h3>
+					<p class="research-excerpt">Examining alignment and divergence in regulatory approaches between major economic powers and their implications for global AI governance.</p>
+					<a href="#" class="research-link">View Abstract →</a>
+				</div>
+				
+				<!-- Research Paper 2 -->
+				<div class="research-card">
+					<div class="research-meta">
+						<span class="research-category">Ethical Framework</span>
+						<span class="research-date">December 2025</span>
+					</div>
+					<h3>Implementing Ethics-by-Design in AI Development</h3>
+					<p class="research-excerpt">Practical guidelines for integrating ethical considerations throughout the AI development lifecycle, from conception to deployment.</p>
+					<a href="#" class="research-link">View Abstract →</a>
+				</div>
+				
+				<!-- Research Paper 3 -->
+				<div class="research-card">
+					<div class="research-meta">
+						<span class="research-category">Case Study</span>
+						<span class="research-date">November 2025</span>
+					</div>
+					<h3>Healthcare AI Governance: Lessons from Clinical Implementation</h3>
+					<p class="research-excerpt">Analysis of governance challenges and solutions in medical AI applications, focusing on patient safety and data privacy concerns.</p>
+					<a href="#" class="research-link">View Abstract →</a>
+				</div>
+			</div>
+			
+			<div class="research-cta">
+				<a href="#" class="btn btn-primary">View All Publications</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section class="contact-section" id="contact">
+		<div class="container">
+			<div class="section-header center">
+				<h2>Get In Touch</h2>
+				<p class="section-subtitle">Connect for discussions, collaborations, or inquiries about AI governance</p>
+			</div>
+			
+			<div class="contact-container">
+				<!-- Contact Information -->
+				<div class="contact-info">
+					<div class="info-card">
+						<div class="info-icon">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+								<polyline points="22,6 12,13 2,6"></polyline>
+							</svg>
+						</div>
+						<h3>Email</h3>
+						<p><a href="mailto:contact@aigovernance.org">contact@aigovernance.org</a></p>
+						<p class="info-note">Typically respond within 24-48 hours</p>
+					</div>
+					
+					<div class="info-card">
+						<div class="info-icon">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<circle cx="12" cy="12" r="10"></circle>
+								<polyline points="12 6 12 12 16 14"></polyline>
+							</svg>
+						</div>
+						<h3>Response Time</h3>
+						<p>Monday - Friday</p>
+						<p class="info-note">9:00 AM - 5:00 PM EST</p>
+					</div>
+					
+					<div class="info-card">
+						<div class="info-icon">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+								<circle cx="12" cy="10" r="3"></circle>
+							</svg>
+						</div>
+						<h3>Location</h3>
+						<p>Remote & Global</p>
+						<p class="info-note">Based online with collaborators worldwide</p>
+					</div>
+				</div>
+				
+				<!-- Contact Form -->
+				<div class="contact-form-container">
+					<h3>Send a Message</h3>
+					<form class="contact-form" id="contactForm">
+						<div class="form-group">
+							<label for="name">Full Name *</label>
+							<input type="text" id="name" name="name" required placeholder="Your name">
+						</div>
+						
+						<div class="form-group">
+							<label for="email">Email Address *</label>
+							<input type="email" id="email" name="email" required placeholder="you@example.com">
+						</div>
+						
+						<div class="form-group">
+							<label for="subject">Subject</label>
+							<select id="subject" name="subject">
+								<option value="">Select a topic</option>
+								<option value="research">Research Collaboration</option>
+								<option value="speaking">Speaking Engagement</option>
+								<option value="consultation">Consultation Inquiry</option>
+								<option value="general">General Question</option>
+								<option value="other">Other</option>
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="message">Message *</label>
+							<textarea id="message" name="message" rows="5" required placeholder="Tell us about your AI governance inquiry..."></textarea>
+						</div>
+						
+						<div class="form-group checkbox">
+							<input type="checkbox" id="newsletter" name="newsletter">
+							<label for="newsletter">Subscribe to monthly AI governance updates</label>
+						</div>
+						
+						<button type="submit" class="btn btn-primary">Send Message</button>
+					</form>
+				</div>
+			</div>
+			
+			<!-- Additional Contact Notes -->
+			<div class="contact-notes">
+				<p><strong>For urgent matters:</strong> Please include "URGENT" in your subject line.</p>
+				<p><strong>Research proposals:</strong> Include a brief overview of your project and objectives.</p>
+				<p><strong>Media inquiries:</strong> Contact <a href="mailto:press@aigovernance.org">press@aigovernance.org</a></p>
+			</div>
+		</div>
+	</section>
+
 	<!-- Footer -->
 	<footer class="site-footer">
 		<div class="container">
@@ -1044,10 +1342,10 @@
 				<div class="footer-col">
 					<h4>Quick Links</h4>
 					<ul>
-						<li><a href="pages/articles.html">Articles</a></li>
-						<li><a href="pages/research.html">Research</a></li>
-						<li><a href="pages/about.html">About</a></li>
-						<li><a href="pages/contact.html">Contact</a></li>
+						<li><a href="#articles">Articles</a></li>
+						<li><a href="#research">Research</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
 					</ul>
 				</div>
 				<div class="footer-col">
@@ -1082,134 +1380,186 @@
 		</div>
 	</footer>
 
-	
-<script>
-    // Mobile Menu Toggle
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navbarLinks = document.querySelector('.navbar-links');
-        
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', function() {
-                navbarLinks.classList.toggle('active');
-                this.classList.toggle('active');
-            });
-            
-            // Close menu when clicking on a link
-            const navLinks = document.querySelectorAll('.navbar-links a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navbarLinks.classList.remove('active');
-                    mobileMenuToggle.classList.remove('active');
-                });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.navbar-container')) {
-                    navbarLinks.classList.remove('active');
-                    mobileMenuToggle.classList.remove('active');
-                }
-            });
-        }
-    });
+	<script>
+		// Mobile Menu Toggle
+		document.addEventListener('DOMContentLoaded', function() {
+			const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+			const navbarLinks = document.querySelector('.navbar-links');
+			
+			if (mobileMenuToggle) {
+				mobileMenuToggle.addEventListener('click', function() {
+					navbarLinks.classList.toggle('active');
+					this.classList.toggle('active');
+				});
+				
+				// Close menu when clicking on a link
+				const navLinks = document.querySelectorAll('.navbar-links a');
+				navLinks.forEach(link => {
+					link.addEventListener('click', function() {
+						navbarLinks.classList.remove('active');
+						mobileMenuToggle.classList.remove('active');
+					});
+				});
+				
+				// Close menu when clicking outside
+				document.addEventListener('click', function(event) {
+					if (!event.target.closest('.navbar-container')) {
+						navbarLinks.classList.remove('active');
+						mobileMenuToggle.classList.remove('active');
+					}
+				});
+			}
+		});
 
-    // Newsletter Form Handler
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput.value;
-            
-            if (email && email.includes('@')) {
-                alert('Thank you for subscribing! You\'ll receive updates at ' + email);
-                emailInput.value = '';
-            }
-        });
-    }
+		// Newsletter Form Handler
+		const newsletterForm = document.querySelector('.newsletter-form');
+		if (newsletterForm) {
+			newsletterForm.addEventListener('submit', function(e) {
+				e.preventDefault();
+				const emailInput = this.querySelector('input[type="email"]');
+				const email = emailInput.value;
+				
+				if (email && email.includes('@')) {
+					alert('Thank you for subscribing! You\'ll receive updates at ' + email);
+					emailInput.value = '';
+				}
+			});
+		}
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href !== '#' && href.startsWith('#')) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            }
-        });
-    });
+		// Contact Form Handler
+		const contactForm = document.getElementById('contactForm');
+		if (contactForm) {
+			contactForm.addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				// Get form values
+				const name = document.getElementById('name').value;
+				const email = document.getElementById('email').value;
+				const subject = document.getElementById('subject').value;
+				const message = document.getElementById('message').value;
+				const newsletter = document.getElementById('newsletter').checked;
+				
+				// Simple validation
+				if (!name || !email || !message) {
+					alert('Please fill in all required fields (Name, Email, Message)');
+					return;
+				}
+				
+				if (!email.includes('@') || !email.includes('.')) {
+					alert('Please enter a valid email address');
+					return;
+				}
+				
+				// In a real website, you would send this data to a server
+				// For now, we'll just show a success message
+				const subjectText = subject ? ` (${subject})` : '';
+				const newsletterText = newsletter ? ' You have been subscribed to our newsletter.' : '';
+				
+				alert(`Thank you, ${name}! Your message has been sent.${newsletterText}\n\nWe'll respond to ${email} within 24-48 hours.`);
+				
+				// Reset form
+				contactForm.reset();
+				
+				// Smooth scroll to top of contact section
+				document.querySelector('#contact').scrollIntoView({
+					behavior: 'smooth'
+				});
+			});
+			
+			// Add animation to form elements on focus
+			const formInputs = contactForm.querySelectorAll('input, select, textarea');
+			formInputs.forEach(input => {
+				input.addEventListener('focus', function() {
+					this.parentElement.style.transform = 'translateX(5px)';
+					this.parentElement.style.transition = 'transform 0.2s ease';
+				});
+				
+				input.addEventListener('blur', function() {
+					this.parentElement.style.transform = 'translateX(0)';
+				});
+			});
+		}
 
-    // Add scroll effect to navbar
-    let lastScroll = 0;
-    const navbar = document.querySelector('.navbar');
+		// Smooth scroll for anchor links
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				const href = this.getAttribute('href');
+				if (href !== '#' && href.startsWith('#')) {
+					e.preventDefault();
+					const target = document.querySelector(href);
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start'
+						});
+					}
+				}
+			});
+		});
 
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
-            navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-        } else {
-            navbar.style.boxShadow = 'none';
-        }
-        
-        lastScroll = currentScroll;
-    });
+		// Add scroll effect to navbar
+		let lastScroll = 0;
+		const navbar = document.querySelector('.navbar');
 
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+		window.addEventListener('scroll', function() {
+			const currentScroll = window.pageYOffset;
+			
+			if (currentScroll > 100) {
+				navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+			} else {
+				navbar.style.boxShadow = 'none';
+			}
+			
+			lastScroll = currentScroll;
+		});
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
+		// Intersection Observer for fade-in animations
+		const observerOptions = {
+			threshold: 0.1,
+			rootMargin: '0px 0px -50px 0px'
+		};
 
-    // Observe article cards, principle cards, and research cards
-    document.querySelectorAll('.article-card, .principle-card, .research-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
+		const observer = new IntersectionObserver(function(entries) {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.style.opacity = '1';
+					entry.target.style.transform = 'translateY(0)';
+				}
+			});
+		}, observerOptions);
 
-    // Update active navigation link on scroll
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.navbar-links a');
-        
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 100)) {
-                current = section.getAttribute('id');
-            }
-        });
+		// Observe article cards, principle cards, and research cards
+		document.querySelectorAll('.article-card, .principle-card, .research-card').forEach(card => {
+			card.style.opacity = '0';
+			card.style.transform = 'translateY(20px)';
+			card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+			observer.observe(card);
+		});
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}` || 
-                (current === '' && link.getAttribute('href') === 'index.html')) {
-                link.classList.add('active');
-            }
-        });
-    });
-</script>
+		// Update active navigation link on scroll
+		window.addEventListener('scroll', function() {
+			const sections = document.querySelectorAll('section[id]');
+			const navLinks = document.querySelectorAll('.navbar-links a');
+			
+			let current = '';
+			sections.forEach(section => {
+				const sectionTop = section.offsetTop;
+				const sectionHeight = section.clientHeight;
+				if (scrollY >= (sectionTop - 100)) {
+					current = section.getAttribute('id');
+				}
+			});
 
-
+			navLinks.forEach(link => {
+				link.classList.remove('active');
+				if (link.getAttribute('href') === `#${current}` || 
+					(current === '' && link.getAttribute('href') === 'index.html')) {
+					link.classList.add('active');
+				}
+			});
+		});
+	</script>
+</body>
 </html>
 
 
