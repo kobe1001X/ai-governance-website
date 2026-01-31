@@ -503,6 +503,17 @@
 			text-transform: uppercase;
 		}
 
+		.article-license {
+			color: var(--accent-green);
+			font-weight: 600;
+			font-size: 0.75rem;
+			background: rgba(104, 179, 152, 0.1);
+			padding: 0.25rem 0.5rem;
+			border-radius: 4px;
+			letter-spacing: 0.05em;
+			cursor: help;
+		}
+
 		.article-title {
 			font-size: 1.5rem;
 			margin-bottom: var(--spacing-sm);
@@ -673,6 +684,19 @@
 			font-size: 0.875rem;
 			letter-spacing: 0.1em;
 			margin-bottom: var(--spacing-sm);
+		}
+
+		.research-license {
+			display: inline-block;
+			color: var(--accent-green);
+			font-weight: 600;
+			font-size: 0.75rem;
+			background: rgba(104, 179, 152, 0.1);
+			padding: 0.25rem 0.5rem;
+			border-radius: 4px;
+			letter-spacing: 0.05em;
+			margin-left: var(--spacing-sm);
+			cursor: help;
 		}
 
 		.research-title {
@@ -981,7 +1005,7 @@
 
 		.footer-grid {
 			display: grid;
-			grid-template-columns: 2fr 1fr 1fr 1fr;
+			grid-template-columns: 2fr 1fr 1fr 1.5fr 1fr;
 			gap: var(--spacing-xl);
 			margin-bottom: var(--spacing-xl);
 		}
@@ -1167,7 +1191,7 @@
 	</section>
 
 	<!-- Articles Section -->
-	<section id="articles" class="fade-in-section">
+	<section id="articles">
 		<div class="container">
 			<div class="section-header">
 				<div class="section-label">Latest Insights</div>
@@ -1176,79 +1200,71 @@
 			</div>
 			<div class="articles-grid">
 				<article class="article-card">
-					<div class="article-image">⚖️</div>
-					<div class="article-content">
-						<div class="article-meta">
-							<span class="article-category">Policy</span>
-							<span class="article-date">Jan 15, 2026</span>
-						</div>
-						<h3 class="article-title">Balancing Innovation and Regulation in AI Development</h3>
-						<p class="article-excerpt">As AI capabilities advance rapidly, policymakers face the challenge of fostering innovation while establishing necessary guardrails. How can we strike the right balance?</p>
-						<a href="#" class="read-more">Read Article</a>
-					</div>
-				</article>
-
-				<article class="article-card">
-					<div class="article-image">🤝</div>
-					<div class="article-content">
-						<div class="article-meta">
-							<span class="article-category">Ethics</span>
-							<span class="article-date">Jan 8, 2026</span>
-						</div>
-						<h3 class="article-title">The Social Contract in the Age of Autonomous Systems</h3>
-						<p class="article-excerpt">When machines make decisions that affect human lives, what obligations do we owe each other? Exploring the philosophical foundations of AI accountability.</p>
-						<a href="#" class="read-more">Read Article</a>
-					</div>
-				</article>
-
-				<article class="article-card">
-					<div class="article-image">🌍</div>
-					<div class="article-content">
-						<div class="article-meta">
-							<span class="article-category">Global</span>
-							<span class="article-date">Dec 28, 2025</span>
-						</div>
-						<h3 class="article-title">International Cooperation on AI Governance: Opportunities and Obstacles</h3>
-						<p class="article-excerpt">Different nations are taking vastly different approaches to AI regulation. Can we develop global standards, or is fragmentation inevitable?</p>
-						<a href="#" class="read-more">Read Article</a>
-					</div>
-				</article>
-
-				<article class="article-card">
-					<div class="article-image">🔒</div>
-					<div class="article-content">
-						<div class="article-meta">
-							<span class="article-category">Security</span>
-							<span class="article-date">Dec 18, 2025</span>
-						</div>
-						<h3 class="article-title">AI Safety: From Research to Implementation</h3>
-						<p class="article-excerpt">The gap between theoretical AI safety research and practical deployment continues to widen. What steps can bridge this critical divide?</p>
-						<a href="#" class="read-more">Read Article</a>
-					</div>
-				</article>
-
-				<article class="article-card">
-					<div class="article-image">👁️</div>
+					<div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop'); background-size: cover; background-position: center;"></div>
 					<div class="article-content">
 						<div class="article-meta">
 							<span class="article-category">Transparency</span>
-							<span class="article-date">Dec 10, 2025</span>
+							<span class="article-date">Jan 2026</span>
+							<span class="article-license" title="Creative Commons Attribution 4.0">CC BY 4.0</span>
 						</div>
-						<h3 class="article-title">The Right to Explanation: Making AI Decision-Making Transparent</h3>
-						<p class="article-excerpt">As AI systems increasingly influence important decisions, the demand for transparency grows. Examining the technical and ethical challenges of explainable AI.</p>
+						<h3 class="article-title">What Does 'Transparency' Actually Mean for AI?</h3>
+						<p class="article-excerpt">As AI systems increasingly influence important decisions, the demand for transparency grows. But what does meaningful AI transparency really look like in practice?</p>
 						<a href="#" class="read-more">Read Article</a>
 					</div>
 				</article>
 
 				<article class="article-card">
-					<div class="article-image">⚡</div>
+					<div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=400&fit=crop'); background-size: cover; background-position: center;"></div>
 					<div class="article-content">
 						<div class="article-meta">
-							<span class="article-category">Impact</span>
-							<span class="article-date">Nov 29, 2025</span>
+							<span class="article-category">Regulation</span>
+							<span class="article-date">Jan 2026</span>
+							<span class="article-license" title="Creative Commons Attribution 4.0">CC BY 4.0</span>
 						</div>
-						<h3 class="article-title">AI's Environmental Footprint: The Hidden Cost of Progress</h3>
-						<p class="article-excerpt">Training large AI models consumes enormous amounts of energy. How can we reconcile AI advancement with environmental sustainability?</p>
+						<h3 class="article-title">Why do companies struggle to document their AI models for regulators?</h3>
+						<p class="article-excerpt">Documentation requirements are mounting, yet organizations find themselves unable to meet regulatory demands. Understanding the systemic challenges behind AI model documentation.</p>
+						<a href="#" class="read-more">Read Article</a>
+					</div>
+				</article>
+
+				<article class="article-card">
+					<div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop'); background-size: cover; background-position: center;"></div>
+					<div class="article-content">
+						<div class="article-meta">
+							<span class="article-category">Technical</span>
+							<span class="article-date">Jan 2026</span>
+							<span class="article-license" title="Creative Commons Attribution 4.0">CC BY 4.0</span>
+						</div>
+						<h3 class="article-title">From Black Box to Blueprint: How to Actually Build Documentable AI Models</h3>
+						<p class="article-excerpt">Moving beyond opacity to create AI systems that are inherently transparent. Practical strategies for building models with documentation as a core design principle.</p>
+						<a href="#" class="read-more">Read Article</a>
+					</div>
+				</article>
+
+				<article class="article-card">
+					<div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop'); background-size: cover; background-position: center;"></div>
+					<div class="article-content">
+						<div class="article-meta">
+							<span class="article-category">Tools</span>
+							<span class="article-date">Jan 2026</span>
+							<span class="article-license" title="Creative Commons Attribution 4.0">CC BY 4.0</span>
+						</div>
+						<h3 class="article-title">The New Toolkit: Can Software Finally Solve AI Documentation?</h3>
+						<p class="article-excerpt">Emerging tools promise to automate AI documentation and compliance. Examining whether technology can bridge the gap between regulatory requirements and practical implementation.</p>
+						<a href="#" class="read-more">Read Article</a>
+					</div>
+				</article>
+
+				<article class="article-card">
+					<div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=400&fit=crop'); background-size: cover; background-position: center;"></div>
+					<div class="article-content">
+						<div class="article-meta">
+							<span class="article-category">Accountability</span>
+							<span class="article-date">Jan 2026</span>
+							<span class="article-license" title="Creative Commons Attribution 4.0">CC BY 4.0</span>
+						</div>
+						<h3 class="article-title">The Cost of Silence: What Happens When AI Models Go Unaudited?</h3>
+						<p class="article-excerpt">The risks and consequences of deploying AI systems without proper oversight. Real-world case studies of what happens when documentation and auditing fall by the wayside.</p>
 						<a href="#" class="read-more">Read Article</a>
 					</div>
 				</article>
@@ -1257,7 +1273,7 @@
 	</section>
 
 	<!-- Principles Section -->
-	<section id="principles" class="principles fade-in-section">
+	<section id="principles" class="principles">
 		<div class="container">
 			<div class="section-header">
 				<div class="section-label">Foundation</div>
@@ -1305,7 +1321,7 @@
 	</section>
 
 	<!-- Research Section -->
-	<section id="research" class="fade-in-section">
+	<section id="research">
 		<div class="container">
 			<div class="section-header">
 				<div class="section-label">Publications</div>
@@ -1314,7 +1330,7 @@
 			</div>
 			<div class="research-grid">
 				<div class="research-card">
-					<div class="research-year">2025</div>
+					<div class="research-year">2026 <span class="research-license" title="Creative Commons Attribution 4.0">CC BY 4.0</span></div>
 					<h3 class="research-title">Governance Frameworks for Large Language Models: A Comparative Analysis</h3>
 					<p class="research-authors">Published in AI & Society Journal</p>
 					<p class="research-summary">This paper examines regulatory approaches to large language models across different jurisdictions, identifying best practices and common challenges in balancing innovation with risk mitigation.</p>
@@ -1322,7 +1338,7 @@
 				</div>
 
 				<div class="research-card">
-					<div class="research-year">2025</div>
+					<div class="research-year">2026 <span class="research-license" title="Creative Commons Attribution 4.0">CC BY 4.0</span></div>
 					<h3 class="research-title">Ethical Considerations in AI-Powered Decision Making</h3>
 					<p class="research-authors">Presented at International AI Ethics Conference</p>
 					<p class="research-summary">An exploration of the moral dimensions of algorithmic decision-making, with particular focus on high-stakes domains such as healthcare, criminal justice, and employment.</p>
@@ -1330,7 +1346,7 @@
 				</div>
 
 				<div class="research-card">
-					<div class="research-year">2024</div>
+					<div class="research-year">2026 <span class="research-license" title="Creative Commons Attribution 4.0">CC BY 4.0</span></div>
 					<h3 class="research-title">Toward Global AI Governance: Lessons from International Cooperation</h3>
 					<p class="research-authors">Policy Brief for United Nations</p>
 					<p class="research-summary">Drawing on historical examples of international cooperation on technology governance, this brief outlines pathways toward effective global AI governance mechanisms.</p>
@@ -1341,7 +1357,7 @@
 	</section>
 
 	<!-- About Section -->
-	<section id="about" class="about fade-in-section">
+	<section id="about" class="about">
 		<div class="container">
 			<div class="about-content">
 				<div class="about-image">🧠</div>
@@ -1363,7 +1379,7 @@
 	</section>
 
 	<!-- Newsletter Section -->
-	<section class="newsletter fade-in-section">
+	<section class="newsletter">
 		<div class="container">
 			<div class="newsletter-content">
 				<h2>Stay Informed</h2>
@@ -1377,7 +1393,7 @@
 	</section>
 
 	<!-- Contact Section -->
-	<section id="contact" class="fade-in-section">
+	<section id="contact">
 		<div class="container-narrow">
 			<div class="section-header">
 				<div class="section-label">Get in Touch</div>
@@ -1392,7 +1408,7 @@
 						<div class="contact-icon">📧</div>
 						<div class="contact-details">
 							<h4>Email</h4>
-							<p>info@aigovernance.org</p>
+							<p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="345d5a525b74555d535b4251465a555a57511a5b4653">[email&#160;protected]</a></p>
 						</div>
 					</div>
 					<div class="contact-item">
@@ -1453,7 +1469,7 @@
 			<div class="contact-notes">
 				<p><strong>For urgent matters:</strong> Please include "URGENT" in your subject line.</p>
 				<p><strong>Research proposals:</strong> Include a brief overview of your project and objectives.</p>
-				<p><strong>Media inquiries:</strong> Contact media@aigovernance.org</p>
+				<p><strong>Media inquiries:</strong> Contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="315c54555850715058565e4754435f505f52541f5e4356">[email&#160;protected]</a></p>
 			</div>
 		</div>
 	</section>
@@ -1484,8 +1500,13 @@
 					</ul>
 				</div>
 				<div class="footer-col">
+					<h4>License</h4>
+					<p>All content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.</p>
+					<p style="margin-top: var(--spacing-sm); font-size: 0.875rem;">You are free to share and adapt our work with proper attribution.</p>
+				</div>
+				<div class="footer-col">
 					<h4>Connect</h4>
-					<p>Email: info@aigovernance.org</p>
+					<p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="88e1e6eee7c8e9e1efe7feedfae6e9e6ebeda6e7faef">[email&#160;protected]</a></p>
 					<div class="social-links">
 						<a href="#" aria-label="Twitter">
 							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1502,12 +1523,13 @@
 				</div>
 			</div>
 			<div class="footer-bottom">
-				<p>&copy; 2026 AI Governance. All rights reserved.</p>
+				<p>&copy; 2026 AI Governance. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> | Content may be shared with attribution.</p>
+				<p style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.7;">Images courtesy of <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> (free to use under Unsplash License)</p>
 			</div>
 		</div>
 	</footer>
 
-	<script>
+	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 		// Mobile Menu Toggle
 		document.addEventListener('DOMContentLoaded', function() {
 			const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -1643,31 +1665,18 @@
 
 		document.querySelectorAll('.fade-in-section').forEach(section => {
 			observer.observe(section);
+			
+			// Make sections immediately visible if they're in viewport on load
+			const rect = section.getBoundingClientRect();
+			const isInViewport = rect.top < window.innerHeight && rect.bottom >= 0;
+			if (isInViewport) {
+				section.classList.add('is-visible');
+			}
 		});
 
 		// Update active navigation link on scroll
 		window.addEventListener('scroll', function() {
 			const sections = document.querySelectorAll('section[id]');
-			const navLinks = document.querySelectorAll('.navbar-links a');
-			
-			let current = '';
-			sections.forEach(section => {
-				const sectionTop = section.offsetTop;
-				const sectionHeight = section.clientHeight;
-				if (window.pageYOffset >= sectionTop - 200) {
-					current = section.getAttribute('id');
-				}
-			});
-			
-			navLinks.forEach(link => {
-				link.classList.remove('active');
-				if (link.getAttribute('href') === '#' + current) {
-					link.classList.add('active');
-				}
-			});
-		});
-	</script>
-</body>
-</html>
+			const navLinks = document.querySelectorAll
 
 
