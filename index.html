@@ -5,1289 +5,1417 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Exploring the principles, ethics, and future of AI governance through research and analysis.">
 	<title>AI Governance | Ethics, Policy & Research</title>
-	<style>
-    /* ===================================
-       CSS Reset & Base Styles
-       =================================== */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    :root {
-        /* Primary Colors */
-        --primary-color: #2563eb;
-        --primary-dark: #1e40af;
-        --primary-light: #3b82f6;
-        
-        /* Secondary Colors */
-        --secondary-color: #0f172a;
-        --secondary-light: #1e293b;
-        --secondary-lighter: #334155;
-        
-        /* Accent Colors */
-        --accent-color: #f59e0b;
-        --accent-light: #fbbf24;
-        
-        /* Neutral Colors */
-        --white: #ffffff;
-        --gray-50: #f8fafc;
-        --gray-100: #f1f5f9;
-        --gray-200: #e2e8f0;
-        --gray-300: #cbd5e1;
-        --gray-400: #94a3b8;
-        --gray-500: #64748b;
-        --gray-600: #475569;
-        --gray-700: #334155;
-        --gray-800: #1e293b;
-        --gray-900: #0f172a;
-        
-        /* Typography */
-        --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        --font-size-base: 16px;
-        --line-height-base: 1.6;
-        
-        /* Spacing */
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 1rem;
-        --spacing-md: 1.5rem;
-        --spacing-lg: 2rem;
-        --spacing-xl: 3rem;
-        --spacing-2xl: 4rem;
-        
-        /* Border Radius */
-        --radius-sm: 0.375rem;
-        --radius-md: 0.5rem;
-        --radius-lg: 0.75rem;
-        --radius-xl: 1rem;
-        
-        /* Shadows */
-        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        
-        /* Transitions */
-        --transition-fast: 150ms ease-in-out;
-        --transition-base: 200ms ease-in-out;
-        --transition-slow: 300ms ease-in-out;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        font-family: var(--font-primary);
-        font-size: var(--font-size-base);
-        line-height: var(--line-height-base);
-        color: var(--gray-800);
-        background-color: var(--white);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* ===================================
-       Typography
-       =================================== */
-    h1, h2, h3, h4, h5, h6 {
-        font-weight: 600;
-        line-height: 1.2;
-        color: var(--gray-900);
-        margin-bottom: var(--spacing-sm);
-    }
-
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2.25rem; }
-    h3 { font-size: 1.875rem; }
-    h4 { font-size: 1.5rem; }
-    h5 { font-size: 1.25rem; }
-    h6 { font-size: 1.125rem; }
-
-    p {
-        margin-bottom: var(--spacing-sm);
-        color: var(--gray-600);
-    }
-
-    a {
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: color var(--transition-fast);
-    }
-
-    a:hover {
-        color: var(--primary-dark);
-    }
-
-    /* ===================================
-       Container & Layout
-       =================================== */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 var(--spacing-md);
-    }
-
-    /* ===================================
-       Navigation
-       =================================== */
-    .navbar {
-        background: var(--white);
-        border-bottom: 1px solid var(--gray-200);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.95);
-    }
-
-    .navbar-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 var(--spacing-md);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 70px;
-    }
-
-    .navbar-brand .logo {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--gray-900);
-        letter-spacing: -0.02em;
-        transition: color var(--transition-fast);
-    }
-
-    .navbar-brand .logo:hover {
-        color: var(--primary-color);
-    }
-
-    .navbar-links {
-        display: flex;
-        list-style: none;
-        gap: var(--spacing-sm);
-        align-items: center;
-    }
-
-    .navbar-links a {
-        padding: var(--spacing-xs) var(--spacing-sm);
-        color: var(--gray-600);
-        font-weight: 500;
-        font-size: 0.9375rem;
-        border-radius: var(--radius-md);
-        transition: all var(--transition-fast);
-    }
-
-    .navbar-links a:hover,
-    .navbar-links a.active {
-        color: var(--primary-color);
-        background-color: var(--gray-50);
-    }
-
-    .mobile-menu-toggle {
-        display: none;
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: var(--spacing-xs);
-    }
-
-    .mobile-menu-toggle span {
-        width: 24px;
-        height: 2px;
-        background-color: var(--gray-700);
-        border-radius: 2px;
-        transition: all var(--transition-base);
-    }
-
-    /* ===================================
-       Hero Section
-       =================================== */
-    .hero {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: var(--spacing-2xl) var(--spacing-md);
-        text-align: center;
-        color: var(--white);
-    }
-
-    .hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .hero-title {
-        font-size: 3.5rem;
-        font-weight: 700;
-        margin-bottom: var(--spacing-md);
-        line-height: 1.1;
-        color: var(--white);
-    }
-
-    .hero-subtitle {
-        font-size: 1.25rem;
-        margin-bottom: var(--spacing-xl);
-        opacity: 0.95;
-        color: var(--white);
-        font-weight: 400;
-    }
-
-    .hero-cta {
-        display: flex;
-        gap: var(--spacing-sm);
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    /* ===================================
-       Buttons
-       =================================== */
-    .btn {
-        display: inline-block;
-        padding: 0.875rem 2rem;
-        border-radius: var(--radius-md);
-        font-weight: 600;
-        font-size: 1rem;
-        transition: all var(--transition-base);
-        cursor: pointer;
-        border: 2px solid transparent;
-        text-align: center;
-    }
-
-    .btn-primary {
-        background-color: var(--white);
-        color: var(--primary-color);
-    }
-
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-    }
-
-    .btn-secondary {
-        background-color: transparent;
-        color: var(--white);
-        border-color: var(--white);
-    }
-
-    .btn-secondary:hover {
-        background-color: var(--white);
-        color: var(--primary-color);
-    }
-
-    /* ===================================
-       Main Content
-       =================================== */
-    .main-content {
-        background-color: var(--gray-50);
-    }
-
-    .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: var(--spacing-xl);
-    }
-
-    .section-header.center {
-        flex-direction: column;
-        text-align: center;
-        gap: var(--spacing-sm);
-    }
-
-    .section-subtitle {
-        font-size: 1.125rem;
-        color: var(--gray-600);
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .view-all {
-        color: var(--primary-color);
-        font-weight: 500;
-        font-size: 0.9375rem;
-        transition: gap var(--transition-fast);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-    }
-
-    .view-all:hover {
-        gap: 0.5rem;
-    }
-
-    /* ===================================
-       Featured Articles Section
-       =================================== */
-    .featured-section {
-        padding: var(--spacing-2xl) 0;
-    }
-
-    .article-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: var(--spacing-lg);
-    }
-
-    .article-card {
-        background: var(--white);
-        border-radius: var(--radius-lg);
-        padding: var(--spacing-lg);
-        box-shadow: var(--shadow-sm);
-        transition: all var(--transition-base);
-        border: 1px solid var(--gray-200);
-    }
-
-    .article-card:hover {
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-4px);
-    }
-
-    .article-meta {
-        display: flex;
-        gap: var(--spacing-sm);
-        margin-bottom: var(--spacing-sm);
-        align-items: center;
-    }
-
-    .article-category {
-        background-color: var(--primary-color);
-        color: var(--white);
-        padding: 0.25rem 0.75rem;
-        border-radius: var(--radius-sm);
-        font-size: 0.8125rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .article-date {
-        color: var(--gray-500);
-        font-size: 0.875rem;
-    }
-
-    .article-title {
-        font-size: 1.5rem;
-        margin-bottom: var(--spacing-sm);
-        color: var(--gray-900);
-    }
-
-    .article-excerpt {
-        color: var(--gray-600);
-        margin-bottom: var(--spacing-md);
-        line-height: 1.7;
-    }
-
-    .article-link {
-        color: var(--primary-color);
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        transition: gap var(--transition-fast);
-    }
-
-    .article-link:hover {
-        gap: 0.5rem;
-    }
-
-    /* ===================================
-       Principles Section
-       =================================== */
-    .principles-section {
-        padding: var(--spacing-2xl) 0;
-        background: var(--white);
-    }
-
-    .principles-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: var(--spacing-lg);
-    }
-
-    .principle-card {
-        background: var(--gray-50);
-        border-radius: var(--radius-lg);
-        padding: var(--spacing-xl) var(--spacing-lg);
-        text-align: center;
-        transition: all var(--transition-base);
-        border: 1px solid var(--gray-200);
-    }
-
-    .principle-card:hover {
-        background: var(--white);
-        box-shadow: var(--shadow-md);
-        transform: translateY(-4px);
-    }
-
-    .principle-icon {
-        width: 64px;
-        height: 64px;
-        margin: 0 auto var(--spacing-md);
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-        border-radius: var(--radius-lg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--white);
-    }
-
-    .principle-card h3 {
-        font-size: 1.375rem;
-        margin-bottom: var(--spacing-sm);
-        color: var(--gray-900);
-    }
-
-    .principle-card p {
-        color: var(--gray-600);
-        line-height: 1.7;
-    }
-
-    /* ===================================
-       About Section
-       =================================== */
-    .about-section {
-        padding: var(--spacing-2xl) 0;
-        background: var(--white);
-    }
-
-    .about-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .about-text h3 {
-        margin-top: var(--spacing-lg);
-        margin-bottom: var(--spacing-sm);
-        color: var(--gray-800);
-    }
-
-    .about-text ul {
-        list-style-position: inside;
-        margin-bottom: var(--spacing-md);
-        color: var(--gray-600);
-    }
-
-    .about-text li {
-        margin-bottom: var(--spacing-xs);
-    }
-
-    /* ===================================
-       Newsletter Section
-       =================================== */
-    .newsletter-section {
-        background: var(--secondary-color);
-        color: var(--white);
-        padding: var(--spacing-2xl) var(--spacing-md);
-    }
-
-    .newsletter-content {
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .newsletter-content h2 {
-        color: var(--white);
-        margin-bottom: var(--spacing-sm);
-    }
-
-    .newsletter-content p {
-        color: rgba(255, 255, 255, 0.8);
-        margin-bottom: var(--spacing-lg);
-        font-size: 1.125rem;
-    }
-
-    .newsletter-form {
-        display: flex;
-        gap: var(--spacing-sm);
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
-    .newsletter-form input {
-        flex: 1;
-        padding: 0.875rem 1.25rem;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: var(--radius-md);
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--white);
-        font-size: 1rem;
-        transition: all var(--transition-base);
-    }
-
-    .newsletter-form input::placeholder {
-        color: rgba(255, 255, 255, 0.6);
-    }
-
-    .newsletter-form input:focus {
-        outline: none;
-        border-color: var(--white);
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    .newsletter-form .btn-primary {
-        background-color: var(--primary-color);
-        color: var(--white);
-        border: none;
-        white-space: nowrap;
-    }
-
-    .newsletter-form .btn-primary:hover {
-        background-color: var(--primary-light);
-    }
-
-    /* ===================================
-       Research Section Styles
-       =================================== */
-    .research-section {
-        padding: var(--spacing-2xl) 0;
-        background: var(--white);
-    }
-
-    .research-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: var(--spacing-lg);
-        margin-bottom: var(--spacing-xl);
-    }
-
-    .research-card {
-        background: var(--gray-50);
-        border-radius: var(--radius-lg);
-        padding: var(--spacing-lg);
-        border: 1px solid var(--gray-200);
-        transition: all var(--transition-base);
-    }
-
-    .research-card:hover {
-        background: var(--white);
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-4px);
-    }
-
-    .research-meta {
-        display: flex;
-        gap: var(--spacing-sm);
-        margin-bottom: var(--spacing-sm);
-        align-items: center;
-    }
-
-    .research-category {
-        background-color: var(--primary-color);
-        color: var(--white);
-        padding: 0.25rem 0.75rem;
-        border-radius: var(--radius-sm);
-        font-size: 0.8125rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .research-date {
-        color: var(--gray-500);
-        font-size: 0.875rem;
-    }
-
-    .research-card h3 {
-        font-size: 1.375rem;
-        margin-bottom: var(--spacing-sm);
-        color: var(--gray-900);
-    }
-
-    .research-excerpt {
-        color: var(--gray-600);
-        margin-bottom: var(--spacing-md);
-        line-height: 1.7;
-    }
-
-    .research-link {
-        color: var(--primary-color);
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        transition: gap var(--transition-fast);
-    }
-
-    .research-link:hover {
-        gap: 0.5rem;
-    }
-
-    .research-cta {
-        text-align: center;
-        margin-top: var(--spacing-lg);
-    }
-
-    /* ===================================
-       Contact Section Styles
-       =================================== */
-    .contact-section {
-        padding: var(--spacing-2xl) 0;
-        background: var(--gray-50);
-        border-top: 1px solid var(--gray-200);
-    }
-
-    .contact-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--spacing-2xl);
-        margin-bottom: var(--spacing-xl);
-    }
-
-    .contact-info {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: var(--spacing-lg);
-    }
-
-    .info-card {
-        background: var(--white);
-        border-radius: var(--radius-lg);
-        padding: var(--spacing-lg);
-        border: 1px solid var(--gray-200);
-        transition: all var(--transition-base);
-    }
-
-    .info-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-    }
-
-    .info-icon {
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-        border-radius: var(--radius-md);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: var(--spacing-md);
-        color: var(--white);
-    }
-
-    .info-card h3 {
-        font-size: 1.25rem;
-        margin-bottom: var(--spacing-xs);
-        color: var(--gray-900);
-    }
-
-    .info-card p {
-        color: var(--gray-600);
-        margin-bottom: var(--spacing-xs);
-    }
-
-    .info-card a {
-        color: var(--primary-color);
-        font-weight: 500;
-    }
-
-    .info-card a:hover {
-        color: var(--primary-dark);
-        text-decoration: underline;
-    }
-
-    .info-note {
-        font-size: 0.875rem;
-        color: var(--gray-500);
-        font-style: italic;
-    }
-
-    .contact-form-container {
-        background: var(--white);
-        border-radius: var(--radius-lg);
-        padding: var(--spacing-xl);
-        border: 1px solid var(--gray-200);
-    }
-
-    .contact-form-container h3 {
-        font-size: 1.5rem;
-        margin-bottom: var(--spacing-lg);
-        color: var(--gray-900);
-    }
-
-    .form-group {
-        margin-bottom: var(--spacing-md);
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: var(--spacing-xs);
-        font-weight: 500;
-        color: var(--gray-700);
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        width: 100%;
-        padding: 0.875rem 1rem;
-        border: 1px solid var(--gray-300);
-        border-radius: var(--radius-md);
-        font-family: var(--font-primary);
-        font-size: 1rem;
-        transition: all var(--transition-base);
-        background: var(--white);
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-        outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-
-    .form-group textarea {
-        resize: vertical;
-        min-height: 120px;
-    }
-
-    .form-group select {
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23475569' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 1rem center;
-        background-size: 16px;
-        padding-right: 2.5rem;
-    }
-
-    .checkbox {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-    }
-
-    .checkbox input[type="checkbox"] {
-        width: auto;
-        margin: 0;
-    }
-
-    .checkbox label {
-        margin: 0;
-        font-weight: normal;
-        color: var(--gray-600);
-    }
-
-    .contact-notes {
-        background: var(--white);
-        border-radius: var(--radius-lg);
-        padding: var(--spacing-lg);
-        border-left: 4px solid var(--primary-color);
-        margin-top: var(--spacing-xl);
-    }
-
-    .contact-notes p {
-        margin-bottom: var(--spacing-sm);
-        color: var(--gray-600);
-    }
-
-    .contact-notes strong {
-        color: var(--gray-800);
-    }
-
-    .contact-notes a {
-        color: var(--primary-color);
-        font-weight: 500;
-    }
-
-    /* Responsive Design for Contact Section */
-    @media (max-width: 1024px) {
-        .contact-container {
-            grid-template-columns: 1fr;
-        }
-        
-        .contact-info {
-            order: 2;
-        }
-        
-        .contact-form-container {
-            order: 1;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .contact-info {
-            grid-template-columns: 1fr;
-        }
-        
-        .contact-form-container {
-            padding: var(--spacing-lg);
-        }
-    }
-
-    /* ===================================
-       Footer
-       =================================== */
-    .site-footer {
-        background: var(--gray-900);
-        color: var(--gray-400);
-        padding: var(--spacing-2xl) 0 var(--spacing-lg);
-    }
-
-    .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: var(--spacing-xl);
-        margin-bottom: var(--spacing-xl);
-    }
-
-    .footer-col h3,
-    .footer-col h4 {
-        color: var(--white);
-        font-size: 1.125rem;
-        margin-bottom: var(--spacing-md);
-    }
-
-    .footer-col p {
-        color: var(--gray-400);
-        line-height: 1.7;
-    }
-
-    .footer-col ul {
-        list-style: none;
-    }
-
-    .footer-col ul li {
-        margin-bottom: var(--spacing-xs);
-    }
-
-    .footer-col a {
-        color: var(--gray-400);
-        transition: color var(--transition-fast);
-    }
-
-    .footer-col a:hover {
-        color: var(--white);
-    }
-
-    .social-links {
-        display: flex;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-md);
-    }
-
-    .social-links a {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: var(--radius-md);
-        transition: all var(--transition-base);
-    }
-
-    .social-links a:hover {
-        background: var(--primary-color);
-        transform: translateY(-2px);
-    }
-
-    .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: var(--spacing-lg);
-        text-align: center;
-    }
-
-    /* ===================================
-       Responsive Design
-       =================================== */
-    @media (max-width: 768px) {
-        .navbar-links {
-            position: fixed;
-            top: 70px;
-            left: -100%;
-            width: 100%;
-            flex-direction: column;
-            background: var(--white);
-            padding: var(--spacing-lg);
-            box-shadow: var(--shadow-xl);
-            transition: left var(--transition-base);
-            align-items: stretch;
-        }
-        
-        .navbar-links.active {
-            left: 0;
-        }
-        
-        .navbar-links a {
-            padding: var(--spacing-sm);
-            text-align: center;
-        }
-        
-        .mobile-menu-toggle {
-            display: flex;
-        }
-        
-        .hero-title {
-            font-size: 2.5rem;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.125rem;
-        }
-        
-        h1 { font-size: 2.25rem; }
-        h2 { font-size: 1.875rem; }
-        h3 { font-size: 1.5rem; }
-        
-        .section-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: var(--spacing-sm);
-        }
-        
-        .article-grid,
-        .principles-grid,
-        .research-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .newsletter-form {
-            flex-direction: column;
-        }
-        
-        .footer-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .hero {
-            padding: var(--spacing-xl) var(--spacing-md);
-        }
-        
-        .hero-title {
-            font-size: 2rem;
-        }
-        
-        .featured-section,
-        .principles-section,
-        .about-section,
-        .research-section {
-            padding: var(--spacing-xl) 0;
-        }
-        
-        .btn {
-            padding: 0.75rem 1.5rem;
-            font-size: 0.9375rem;
-        }
-    }
-
-    /* Responsive adjustments for Research */
-    @media (max-width: 768px) {
-        .research-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .research-card {
-            padding: var(--spacing-md);
-        }
-    }
-</style>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300&family=General+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		/* ===================================
+		   CSS Reset & Base Styles
+		   =================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			/* Color Palette - Sophisticated Navy & Gold */
+			--primary-navy: #0a1628;
+			--secondary-navy: #1a2d47;
+			--accent-navy: #2d4566;
+			--gold: #d4a574;
+			--gold-light: #e8c9a0;
+			--gold-dark: #b8864f;
+			
+			/* Neutral Colors */
+			--white: #ffffff;
+			--off-white: #f8f7f4;
+			--warm-gray: #e8e4df;
+			--mid-gray: #7a7568;
+			--dark-gray: #3a3932;
+			
+			/* Accent Colors */
+			--accent-blue: #4a90e2;
+			--accent-green: #68b398;
+			
+			/* Typography */
+			--font-display: 'Fraunces', serif;
+			--font-body: 'General Sans', -apple-system, system-ui, sans-serif;
+			
+			/* Spacing */
+			--spacing-xs: 0.5rem;
+			--spacing-sm: 1rem;
+			--spacing-md: 1.5rem;
+			--spacing-lg: 2.5rem;
+			--spacing-xl: 4rem;
+			--spacing-2xl: 6rem;
+			
+			/* Border Radius */
+			--radius-sm: 4px;
+			--radius-md: 8px;
+			--radius-lg: 16px;
+			
+			/* Transitions */
+			--transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+			--transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		}
+
+		html {
+			scroll-behavior: smooth;
+			font-size: 16px;
+		}
+
+		body {
+			font-family: var(--font-body);
+			font-size: 1rem;
+			line-height: 1.7;
+			color: var(--dark-gray);
+			background-color: var(--off-white);
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			overflow-x: hidden;
+		}
+
+		/* ===================================
+		   Typography
+		   =================================== */
+		h1, h2, h3, h4, h5, h6 {
+			font-family: var(--font-display);
+			font-weight: 600;
+			line-height: 1.2;
+			color: var(--primary-navy);
+			margin-bottom: var(--spacing-sm);
+		}
+
+		h1 { 
+			font-size: clamp(2.5rem, 5vw, 4.5rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+		}
+		
+		h2 { 
+			font-size: clamp(2rem, 4vw, 3.5rem);
+			letter-spacing: -0.01em;
+		}
+		
+		h3 { 
+			font-size: clamp(1.5rem, 3vw, 2.25rem);
+		}
+
+		p {
+			margin-bottom: var(--spacing-sm);
+			color: var(--mid-gray);
+			font-weight: 400;
+		}
+
+		a {
+			color: var(--gold-dark);
+			text-decoration: none;
+			transition: all 0.3s var(--transition-smooth);
+			position: relative;
+		}
+
+		a:hover {
+			color: var(--gold);
+		}
+
+		/* ===================================
+		   Container & Layout
+		   =================================== */
+		.container {
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 0 var(--spacing-lg);
+		}
+
+		.container-narrow {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 0 var(--spacing-md);
+		}
+
+		/* ===================================
+		   Navigation
+		   =================================== */
+		.navbar {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 1000;
+			background: rgba(10, 22, 40, 0.95);
+			backdrop-filter: blur(20px);
+			border-bottom: 1px solid rgba(212, 165, 116, 0.1);
+			animation: slideDown 0.6s var(--transition-smooth);
+		}
+
+		@keyframes slideDown {
+			from {
+				transform: translateY(-100%);
+				opacity: 0;
+			}
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+
+		.navbar-container {
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 0 var(--spacing-lg);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 90px;
+		}
+
+		.navbar-brand .logo {
+			font-family: var(--font-display);
+			font-size: 1.75rem;
+			font-weight: 700;
+			color: var(--white);
+			letter-spacing: -0.02em;
+			transition: color 0.3s var(--transition-smooth);
+		}
+
+		.navbar-brand .logo:hover {
+			color: var(--gold-light);
+		}
+
+		.navbar-links {
+			display: flex;
+			list-style: none;
+			gap: var(--spacing-xs);
+			align-items: center;
+		}
+
+		.navbar-links a {
+			padding: var(--spacing-xs) var(--spacing-md);
+			color: var(--warm-gray);
+			font-weight: 500;
+			font-size: 0.95rem;
+			letter-spacing: 0.02em;
+			transition: all 0.3s var(--transition-smooth);
+			position: relative;
+		}
+
+		.navbar-links a::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 0;
+			height: 2px;
+			background: var(--gold);
+			transition: all 0.3s var(--transition-smooth);
+			transform: translateX(-50%);
+		}
+
+		.navbar-links a:hover {
+			color: var(--gold-light);
+		}
+
+		.navbar-links a:hover::after,
+		.navbar-links a.active::after {
+			width: 60%;
+		}
+
+		.mobile-menu-toggle {
+			display: none;
+			flex-direction: column;
+			gap: 6px;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: var(--spacing-xs);
+		}
+
+		.mobile-menu-toggle span {
+			width: 28px;
+			height: 2px;
+			background-color: var(--gold);
+			border-radius: 2px;
+			transition: all 0.3s var(--transition-smooth);
+		}
+
+		/* ===================================
+		   Hero Section
+		   =================================== */
+		.hero {
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 50%, var(--accent-navy) 100%);
+			position: relative;
+			overflow: hidden;
+			padding-top: 90px;
+		}
+
+		.hero::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: 
+				radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+				radial-gradient(circle at 80% 80%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+			animation: pulseGlow 8s ease-in-out infinite alternate;
+		}
+
+		@keyframes pulseGlow {
+			0% { opacity: 0.5; }
+			100% { opacity: 1; }
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 2;
+			max-width: 1000px;
+			animation: fadeInUp 1s var(--transition-smooth) 0.3s backwards;
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(40px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.hero-label {
+			font-size: 0.875rem;
+			color: var(--gold-light);
+			font-weight: 600;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			margin-bottom: var(--spacing-md);
+			display: inline-block;
+			animation: fadeInUp 1s var(--transition-smooth) 0.5s backwards;
+		}
+
+		.hero-title {
+			font-size: clamp(3rem, 7vw, 6rem);
+			font-weight: 700;
+			margin-bottom: var(--spacing-md);
+			line-height: 1.1;
+			color: var(--white);
+			animation: fadeInUp 1s var(--transition-smooth) 0.7s backwards;
+		}
+
+		.hero-title .highlight {
+			color: var(--gold-light);
+			font-style: italic;
+		}
+
+		.hero-subtitle {
+			font-size: clamp(1.125rem, 2vw, 1.5rem);
+			margin-bottom: var(--spacing-xl);
+			color: rgba(255, 255, 255, 0.85);
+			line-height: 1.6;
+			max-width: 700px;
+			animation: fadeInUp 1s var(--transition-smooth) 0.9s backwards;
+		}
+
+		.hero-cta {
+			display: flex;
+			gap: var(--spacing-md);
+			flex-wrap: wrap;
+			animation: fadeInUp 1s var(--transition-smooth) 1.1s backwards;
+		}
+
+		/* ===================================
+		   Buttons
+		   =================================== */
+		.btn {
+			display: inline-block;
+			padding: 1rem 2.5rem;
+			border-radius: var(--radius-md);
+			font-weight: 600;
+			font-size: 1rem;
+			border: none;
+			cursor: pointer;
+			transition: all 0.3s var(--transition-smooth);
+			text-align: center;
+			letter-spacing: 0.02em;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.btn::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 0;
+			height: 0;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, 0.1);
+			transform: translate(-50%, -50%);
+			transition: width 0.6s, height 0.6s;
+		}
+
+		.btn:hover::before {
+			width: 300px;
+			height: 300px;
+		}
+
+		.btn-primary {
+			background: var(--gold);
+			color: var(--primary-navy);
+		}
+
+		.btn-primary:hover {
+			background: var(--gold-light);
+			transform: translateY(-2px);
+			box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+		}
+
+		.btn-secondary {
+			background: transparent;
+			color: var(--white);
+			border: 2px solid var(--gold);
+		}
+
+		.btn-secondary:hover {
+			background: var(--gold);
+			color: var(--primary-navy);
+			transform: translateY(-2px);
+		}
+
+		/* ===================================
+		   Sections
+		   =================================== */
+		section {
+			padding: var(--spacing-2xl) 0;
+			position: relative;
+		}
+
+		.section-header {
+			text-align: center;
+			margin-bottom: var(--spacing-xl);
+			max-width: 800px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.section-label {
+			font-size: 0.875rem;
+			color: var(--gold-dark);
+			font-weight: 600;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			margin-bottom: var(--spacing-sm);
+		}
+
+		.section-title {
+			font-size: clamp(2rem, 4vw, 3.5rem);
+			margin-bottom: var(--spacing-md);
+		}
+
+		.section-description {
+			font-size: 1.125rem;
+			color: var(--mid-gray);
+			line-height: 1.7;
+		}
+
+		/* ===================================
+		   Article Cards
+		   =================================== */
+		.articles-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: var(--spacing-lg);
+			margin-top: var(--spacing-xl);
+		}
+
+		.article-card {
+			background: var(--white);
+			border-radius: var(--radius-lg);
+			overflow: hidden;
+			transition: all 0.4s var(--transition-smooth);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			position: relative;
+		}
+
+		.article-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: linear-gradient(90deg, var(--gold), var(--gold-light));
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: transform 0.4s var(--transition-smooth);
+		}
+
+		.article-card:hover::before {
+			transform: scaleX(1);
+		}
+
+		.article-card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+		}
+
+		.article-image {
+			width: 100%;
+			height: 240px;
+			background: linear-gradient(135deg, var(--accent-navy), var(--secondary-navy));
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 4rem;
+			color: var(--gold-light);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.article-image::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(circle at 30% 50%, rgba(212, 165, 116, 0.2) 0%, transparent 70%);
+		}
+
+		.article-content {
+			padding: var(--spacing-lg);
+		}
+
+		.article-meta {
+			display: flex;
+			gap: var(--spacing-md);
+			margin-bottom: var(--spacing-sm);
+			font-size: 0.875rem;
+			color: var(--mid-gray);
+		}
+
+		.article-category {
+			color: var(--gold-dark);
+			font-weight: 600;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+		}
+
+		.article-title {
+			font-size: 1.5rem;
+			margin-bottom: var(--spacing-sm);
+			font-weight: 600;
+			color: var(--primary-navy);
+			transition: color 0.3s;
+		}
+
+		.article-card:hover .article-title {
+			color: var(--gold-dark);
+		}
+
+		.article-excerpt {
+			color: var(--mid-gray);
+			line-height: 1.6;
+			margin-bottom: var(--spacing-md);
+		}
+
+		.read-more {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			color: var(--gold-dark);
+			font-weight: 600;
+			font-size: 0.95rem;
+			transition: all 0.3s;
+		}
+
+		.read-more:hover {
+			gap: 1rem;
+		}
+
+		.read-more::after {
+			content: '→';
+			transition: transform 0.3s;
+		}
+
+		.read-more:hover::after {
+			transform: translateX(4px);
+		}
+
+		/* ===================================
+		   Principles Section
+		   =================================== */
+		.principles {
+			background: var(--primary-navy);
+			color: var(--white);
+		}
+
+		.principles .section-label {
+			color: var(--gold-light);
+		}
+
+		.principles .section-title {
+			color: var(--white);
+		}
+
+		.principles .section-description {
+			color: rgba(255, 255, 255, 0.8);
+		}
+
+		.principles-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: var(--spacing-lg);
+			margin-top: var(--spacing-xl);
+		}
+
+		.principle-card {
+			background: rgba(255, 255, 255, 0.05);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(212, 165, 116, 0.2);
+			border-radius: var(--radius-lg);
+			padding: var(--spacing-lg);
+			transition: all 0.4s var(--transition-smooth);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.principle-card::before {
+			content: '';
+			position: absolute;
+			top: -50%;
+			right: -50%;
+			width: 200%;
+			height: 200%;
+			background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+			opacity: 0;
+			transition: opacity 0.4s;
+		}
+
+		.principle-card:hover::before {
+			opacity: 1;
+		}
+
+		.principle-card:hover {
+			transform: translateY(-8px);
+			border-color: var(--gold);
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+		}
+
+		.principle-icon {
+			font-size: 3rem;
+			margin-bottom: var(--spacing-md);
+			display: inline-block;
+			transition: transform 0.4s var(--transition-bounce);
+		}
+
+		.principle-card:hover .principle-icon {
+			transform: scale(1.1) rotate(5deg);
+		}
+
+		.principle-title {
+			font-size: 1.5rem;
+			margin-bottom: var(--spacing-sm);
+			color: var(--gold-light);
+		}
+
+		.principle-description {
+			color: rgba(255, 255, 255, 0.85);
+			line-height: 1.7;
+		}
+
+		/* ===================================
+		   Research Section
+		   =================================== */
+		.research-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			gap: var(--spacing-lg);
+			margin-top: var(--spacing-xl);
+		}
+
+		.research-card {
+			background: var(--white);
+			border-radius: var(--radius-lg);
+			padding: var(--spacing-lg);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			transition: all 0.4s var(--transition-smooth);
+			position: relative;
+		}
+
+		.research-card::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: linear-gradient(90deg, var(--gold), var(--accent-blue));
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: transform 0.4s var(--transition-smooth);
+		}
+
+		.research-card:hover::after {
+			transform: scaleX(1);
+		}
+
+		.research-card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+		}
+
+		.research-year {
+			color: var(--gold-dark);
+			font-weight: 700;
+			font-size: 0.875rem;
+			letter-spacing: 0.1em;
+			margin-bottom: var(--spacing-sm);
+		}
+
+		.research-title {
+			font-size: 1.375rem;
+			margin-bottom: var(--spacing-sm);
+			color: var(--primary-navy);
+		}
+
+		.research-authors {
+			color: var(--mid-gray);
+			font-size: 0.9375rem;
+			margin-bottom: var(--spacing-sm);
+			font-style: italic;
+		}
+
+		.research-summary {
+			color: var(--mid-gray);
+			line-height: 1.7;
+			margin-bottom: var(--spacing-md);
+		}
+
+		.research-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			color: var(--gold-dark);
+			font-weight: 600;
+			font-size: 0.95rem;
+		}
+
+		/* ===================================
+		   About Section
+		   =================================== */
+		.about {
+			background: linear-gradient(135deg, var(--warm-gray) 0%, var(--off-white) 100%);
+		}
+
+		.about-content {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: var(--spacing-xl);
+			align-items: center;
+			margin-top: var(--spacing-xl);
+		}
+
+		.about-image {
+			width: 100%;
+			height: 500px;
+			background: linear-gradient(135deg, var(--secondary-navy), var(--accent-navy));
+			border-radius: var(--radius-lg);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 6rem;
+			color: var(--gold-light);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.about-image::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(circle at 40% 40%, rgba(212, 165, 116, 0.3) 0%, transparent 70%);
+		}
+
+		.about-text h3 {
+			font-size: 2rem;
+			margin-bottom: var(--spacing-md);
+		}
+
+		.about-text p {
+			font-size: 1.0625rem;
+			line-height: 1.8;
+			margin-bottom: var(--spacing-md);
+		}
+
+		.expertise-list {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: var(--spacing-sm);
+			margin-top: var(--spacing-lg);
+		}
+
+		.expertise-item {
+			display: flex;
+			align-items: center;
+			gap: var(--spacing-sm);
+			color: var(--dark-gray);
+			font-weight: 500;
+		}
+
+		.expertise-item::before {
+			content: '✓';
+			color: var(--gold-dark);
+			font-weight: 700;
+			font-size: 1.25rem;
+		}
+
+		/* ===================================
+		   Newsletter Section
+		   =================================== */
+		.newsletter {
+			background: var(--primary-navy);
+			color: var(--white);
+			text-align: center;
+		}
+
+		.newsletter-content {
+			max-width: 700px;
+			margin: 0 auto;
+		}
+
+		.newsletter h2 {
+			color: var(--white);
+			margin-bottom: var(--spacing-md);
+		}
+
+		.newsletter p {
+			color: rgba(255, 255, 255, 0.85);
+			font-size: 1.125rem;
+			margin-bottom: var(--spacing-xl);
+		}
+
+		.newsletter-form {
+			display: flex;
+			gap: var(--spacing-sm);
+			max-width: 500px;
+			margin: 0 auto;
+		}
+
+		.newsletter-form input {
+			flex: 1;
+			padding: 1rem 1.5rem;
+			border: 2px solid rgba(212, 165, 116, 0.3);
+			border-radius: var(--radius-md);
+			font-size: 1rem;
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			color: var(--white);
+			transition: all 0.3s;
+		}
+
+		.newsletter-form input::placeholder {
+			color: rgba(255, 255, 255, 0.5);
+		}
+
+		.newsletter-form input:focus {
+			outline: none;
+			border-color: var(--gold);
+			background: rgba(255, 255, 255, 0.15);
+		}
+
+		.newsletter-form button {
+			padding: 1rem 2rem;
+			background: var(--gold);
+			color: var(--primary-navy);
+			border: none;
+			border-radius: var(--radius-md);
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s;
+		}
+
+		.newsletter-form button:hover {
+			background: var(--gold-light);
+			transform: translateY(-2px);
+		}
+
+		/* ===================================
+		   Contact Section
+		   =================================== */
+		.contact-container {
+			max-width: 900px;
+			margin: 0 auto;
+		}
+
+		.contact-grid {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			gap: var(--spacing-xl);
+			margin-top: var(--spacing-xl);
+		}
+
+		.contact-info {
+			background: var(--white);
+			padding: var(--spacing-lg);
+			border-radius: var(--radius-lg);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+		}
+
+		.contact-info h3 {
+			font-size: 1.5rem;
+			margin-bottom: var(--spacing-md);
+		}
+
+		.contact-item {
+			display: flex;
+			gap: var(--spacing-md);
+			margin-bottom: var(--spacing-md);
+			padding-bottom: var(--spacing-md);
+			border-bottom: 1px solid var(--warm-gray);
+		}
+
+		.contact-item:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+
+		.contact-icon {
+			font-size: 1.5rem;
+			color: var(--gold-dark);
+		}
+
+		.contact-details h4 {
+			font-size: 1rem;
+			margin-bottom: 0.25rem;
+		}
+
+		.contact-details p {
+			color: var(--mid-gray);
+			font-size: 0.9375rem;
+		}
+
+		.contact-form-wrapper {
+			background: var(--white);
+			padding: var(--spacing-xl);
+			border-radius: var(--radius-lg);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+		}
+
+		.form-group {
+			margin-bottom: var(--spacing-md);
+		}
+
+		.form-group label {
+			display: block;
+			margin-bottom: var(--spacing-xs);
+			font-weight: 600;
+			color: var(--dark-gray);
+			font-size: 0.9375rem;
+		}
+
+		.form-group input,
+		.form-group select,
+		.form-group textarea {
+			width: 100%;
+			padding: 0.875rem 1rem;
+			border: 2px solid var(--warm-gray);
+			border-radius: var(--radius-md);
+			font-size: 1rem;
+			font-family: var(--font-body);
+			transition: all 0.3s;
+			background: var(--off-white);
+		}
+
+		.form-group input:focus,
+		.form-group select:focus,
+		.form-group textarea:focus {
+			outline: none;
+			border-color: var(--gold);
+			background: var(--white);
+		}
+
+		.form-group.checkbox {
+			display: flex;
+			align-items: center;
+			gap: var(--spacing-sm);
+		}
+
+		.form-group.checkbox input {
+			width: auto;
+		}
+
+		.form-group.checkbox label {
+			margin-bottom: 0;
+			font-weight: 400;
+		}
+
+		.contact-notes {
+			margin-top: var(--spacing-lg);
+			padding: var(--spacing-md);
+			background: var(--off-white);
+			border-radius: var(--radius-md);
+			border-left: 4px solid var(--gold);
+		}
+
+		.contact-notes p {
+			font-size: 0.9375rem;
+			margin-bottom: var(--spacing-sm);
+		}
+
+		.contact-notes p:last-child {
+			margin-bottom: 0;
+		}
+
+		/* ===================================
+		   Footer
+		   =================================== */
+		.site-footer {
+			background: var(--primary-navy);
+			color: rgba(255, 255, 255, 0.8);
+			padding: var(--spacing-xl) 0 var(--spacing-lg);
+		}
+
+		.footer-grid {
+			display: grid;
+			grid-template-columns: 2fr 1fr 1fr 1fr;
+			gap: var(--spacing-xl);
+			margin-bottom: var(--spacing-xl);
+		}
+
+		.footer-col h3,
+		.footer-col h4 {
+			color: var(--gold-light);
+			margin-bottom: var(--spacing-md);
+			font-size: 1.25rem;
+		}
+
+		.footer-col p {
+			color: rgba(255, 255, 255, 0.7);
+			line-height: 1.7;
+		}
+
+		.footer-col ul {
+			list-style: none;
+		}
+
+		.footer-col ul li {
+			margin-bottom: var(--spacing-sm);
+		}
+
+		.footer-col a {
+			color: rgba(255, 255, 255, 0.7);
+			transition: color 0.3s;
+		}
+
+		.footer-col a:hover {
+			color: var(--gold-light);
+		}
+
+		.social-links {
+			display: flex;
+			gap: var(--spacing-sm);
+			margin-top: var(--spacing-md);
+		}
+
+		.social-links a {
+			width: 40px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 50%;
+			transition: all 0.3s;
+		}
+
+		.social-links a:hover {
+			background: var(--gold);
+			transform: translateY(-4px);
+		}
+
+		.footer-bottom {
+			text-align: center;
+			padding-top: var(--spacing-lg);
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		/* ===================================
+		   Responsive Design
+		   =================================== */
+		@media (max-width: 1024px) {
+			.footer-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			.about-content {
+				grid-template-columns: 1fr;
+			}
+
+			.contact-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.navbar-links {
+				position: fixed;
+				top: 90px;
+				left: 0;
+				right: 0;
+				background: var(--primary-navy);
+				flex-direction: column;
+				padding: var(--spacing-lg);
+				transform: translateX(-100%);
+				transition: transform 0.3s var(--transition-smooth);
+				border-top: 1px solid rgba(212, 165, 116, 0.2);
+			}
+
+			.navbar-links.active {
+				transform: translateX(0);
+			}
+
+			.mobile-menu-toggle {
+				display: flex;
+			}
+
+			.mobile-menu-toggle.active span:nth-child(1) {
+				transform: rotate(45deg) translate(8px, 8px);
+			}
+
+			.mobile-menu-toggle.active span:nth-child(2) {
+				opacity: 0;
+			}
+
+			.mobile-menu-toggle.active span:nth-child(3) {
+				transform: rotate(-45deg) translate(7px, -7px);
+			}
+
+			.articles-grid,
+			.principles-grid,
+			.research-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.footer-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.newsletter-form {
+				flex-direction: column;
+			}
+
+			.expertise-list {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* ===================================
+		   Scroll Animations
+		   =================================== */
+		.fade-in-section {
+			opacity: 0;
+			transform: translateY(30px);
+			transition: opacity 0.8s var(--transition-smooth), 
+			            transform 0.8s var(--transition-smooth);
+		}
+
+		.fade-in-section.is-visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	</style>
 </head>
 <body>
 	<!-- Navigation -->
 	<nav class="navbar">
 		<div class="navbar-container">
 			<div class="navbar-brand">
-				<a href="index.html" class="logo">AI Governance</a>
+				<a href="#" class="logo">AI Governance</a>
 			</div>
+			<ul class="navbar-links">
+				<li><a href="#articles" class="active">Articles</a></li>
+				<li><a href="#principles">Principles</a></li>
+				<li><a href="#research">Research</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
 			<button class="mobile-menu-toggle" aria-label="Toggle menu">
 				<span></span>
 				<span></span>
 				<span></span>
 			</button>
-			<ul class="navbar-links">
-				<li><a href="index.html" class="active">Home</a></li>
-				<li><a href="#articles">Articles</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#research">Research</a></li>
-				<li><a href="#contact">Contact</a></li>
-			</ul>
 		</div>
 	</nav>
 
 	<!-- Hero Section -->
 	<section class="hero">
-		<div class="hero-content">
-			<h1 class="hero-title">Navigating the Future of AI Governance</h1>
-			<p class="hero-subtitle">Exploring the principles, policies, and ethical frameworks shaping artificial intelligence</p>
-			<div class="hero-cta">
-				<a href="#articles" class="btn btn-primary">Read Articles</a>
-				<a href="#about" class="btn btn-secondary">Learn More</a>
+		<div class="container">
+			<div class="hero-content">
+				<div class="hero-label">The Future of AI</div>
+				<h1 class="hero-title">Shaping the <span class="highlight">ethical future</span> of artificial intelligence</h1>
+				<p class="hero-subtitle">Exploring the critical intersection of technology, governance, and human values through rigorous research and thoughtful policy analysis.</p>
+				<div class="hero-cta">
+					<a href="#research" class="btn btn-primary">Explore Research</a>
+					<a href="#principles" class="btn btn-secondary">Core Principles</a>
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Main Content -->
-	<main class="main-content">
-		<!-- Featured Articles -->
-		<section class="featured-section" id="articles">
-			<div class="container">
-				<div class="section-header">
-					<h2>Latest Insights</h2>
-					<a href="#articles" class="view-all">View all articles →</a>
-				</div>
-				<div class="article-grid">
-					<article class="article-card">
+	<!-- Articles Section -->
+	<section id="articles" class="fade-in-section">
+		<div class="container">
+			<div class="section-header">
+				<div class="section-label">Latest Insights</div>
+				<h2 class="section-title">Featured Articles</h2>
+				<p class="section-description">Deep dives into the most pressing questions in AI governance, ethics, and policy.</p>
+			</div>
+			<div class="articles-grid">
+				<article class="article-card">
+					<div class="article-image">⚖️</div>
+					<div class="article-content">
 						<div class="article-meta">
 							<span class="article-category">Policy</span>
-							<span class="article-date">Jan 28, 2026</span>
+							<span class="article-date">Jan 15, 2026</span>
 						</div>
-						<h3 class="article-title">The Evolution of AI Regulation in 2026</h3>
-						<p class="article-excerpt">As governments worldwide grapple with AI oversight, new regulatory frameworks are emerging that balance innovation with accountability...</p>
-						<a href="#" class="article-link">Read more →</a>
-					</article>
-					<article class="article-card">
+						<h3 class="article-title">Balancing Innovation and Regulation in AI Development</h3>
+						<p class="article-excerpt">As AI capabilities advance rapidly, policymakers face the challenge of fostering innovation while establishing necessary guardrails. How can we strike the right balance?</p>
+						<a href="#" class="read-more">Read Article</a>
+					</div>
+				</article>
+
+				<article class="article-card">
+					<div class="article-image">🤝</div>
+					<div class="article-content">
 						<div class="article-meta">
 							<span class="article-category">Ethics</span>
-							<span class="article-date">Jan 25, 2026</span>
+							<span class="article-date">Jan 8, 2026</span>
 						</div>
-						<h3 class="article-title">Algorithmic Bias: Detection and Mitigation</h3>
-						<p class="article-excerpt">Understanding how bias enters AI systems and what organizations can do to identify and address it effectively...</p>
-						<a href="#" class="article-link">Read more →</a>
-					</article>
-					<article class="article-card">
+						<h3 class="article-title">The Social Contract in the Age of Autonomous Systems</h3>
+						<p class="article-excerpt">When machines make decisions that affect human lives, what obligations do we owe each other? Exploring the philosophical foundations of AI accountability.</p>
+						<a href="#" class="read-more">Read Article</a>
+					</div>
+				</article>
+
+				<article class="article-card">
+					<div class="article-image">🌍</div>
+					<div class="article-content">
 						<div class="article-meta">
-							<span class="article-category">Research</span>
-							<span class="article-date">Jan 22, 2026</span>
+							<span class="article-category">Global</span>
+							<span class="article-date">Dec 28, 2025</span>
 						</div>
-						<h3 class="article-title">Transparency in AI Decision-Making</h3>
-						<p class="article-excerpt">Exploring methods for making AI systems more interpretable and their decisions more explainable to stakeholders...</p>
-						<a href="#" class="article-link">Read more →</a>
-					</article>
-				</div>
-			</div>
-		</section>
+						<h3 class="article-title">International Cooperation on AI Governance: Opportunities and Obstacles</h3>
+						<p class="article-excerpt">Different nations are taking vastly different approaches to AI regulation. Can we develop global standards, or is fragmentation inevitable?</p>
+						<a href="#" class="read-more">Read Article</a>
+					</div>
+				</article>
 
-		<!-- Principles Section -->
-		<section class="principles-section" id="principles">
-			<div class="container">
-				<div class="section-header center">
-					<h2>Core Principles of AI Governance</h2>
-					<p class="section-subtitle">A framework for responsible AI development and deployment</p>
-				</div>
-				<div class="principles-grid">
-					<div class="principle-card">
-						<div class="principle-icon">
-							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-								<circle cx="12" cy="12" r="3"></circle>
-							</svg>
+				<article class="article-card">
+					<div class="article-image">🔒</div>
+					<div class="article-content">
+						<div class="article-meta">
+							<span class="article-category">Security</span>
+							<span class="article-date">Dec 18, 2025</span>
 						</div>
-						<h3>Transparency</h3>
-						<p>AI systems should be understandable, with clear documentation of their capabilities, limitations, and decision-making processes.</p>
+						<h3 class="article-title">AI Safety: From Research to Implementation</h3>
+						<p class="article-excerpt">The gap between theoretical AI safety research and practical deployment continues to widen. What steps can bridge this critical divide?</p>
+						<a href="#" class="read-more">Read Article</a>
 					</div>
-					<div class="principle-card">
-						<div class="principle-icon">
-							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-								<circle cx="8.5" cy="7" r="4"></circle>
-								<polyline points="17 11 19 13 23 9"></polyline>
-							</svg>
-						</div>
-						<h3>Accountability</h3>
-						<p>Clear lines of responsibility must be established for AI systems, ensuring organizations and individuals are answerable for outcomes.</p>
-					</div>
-					<div class="principle-card">
-						<div class="principle-icon">
-							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-								<path d="M2 17l10 5 10-5"></path>
-								<path d="M2 12l10 5 10-5"></path>
-							</svg>
-						</div>
-						<h3>Fairness</h3>
-						<p>AI systems must be designed to avoid discrimination and ensure equitable treatment across diverse populations and use cases.</p>
-					</div>
-					<div class="principle-card">
-						<div class="principle-icon">
-							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-								<path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-							</svg>
-						</div>
-						<h3>Privacy</h3>
-						<p>AI development and deployment must respect individual privacy rights and protect sensitive personal information.</p>
-					</div>
-					<div class="principle-card">
-						<div class="principle-icon">
-							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-							</svg>
-						</div>
-						<h3>Safety</h3>
-						<p>AI systems should be robust, secure, and designed to minimize risks to individuals, organizations, and society.</p>
-					</div>
-					<div class="principle-card">
-						<div class="principle-icon">
-							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-								<circle cx="9" cy="7" r="4"></circle>
-								<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-								<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-							</svg>
-						</div>
-						<h3>Collaboration</h3>
-						<p>Effective AI governance requires cooperation among stakeholders including policymakers, researchers, industry, and civil society.</p>
-					</div>
-				</div>
-			</div>
-		</section>
+				</article>
 
-		<!-- About Section -->
-		<section class="about-section" id="about">
-			<div class="container">
-				<div class="section-header center">
-					<h2>About This Research</h2>
-					<p class="section-subtitle">Understanding AI governance frameworks and their implementation</p>
-				</div>
-				<div class="about-content">
-					<div class="about-text">
-						<h3>Research Mission</h3>
-						<p>This platform examines the evolving landscape of artificial intelligence governance, focusing on ethical frameworks, regulatory approaches, and implementation challenges across different sectors and regions.</p>
-						
-						<h3>Key Focus Areas</h3>
-						<ul>
-							<li>Ethical AI development and deployment</li>
-							<li>International policy harmonization</li>
-							<li>Transparency and accountability mechanisms</li>
-							<li>Risk assessment and mitigation strategies</li>
-						</ul>
-						
-						<h3>Methodology</h3>
-						<p>Our research combines analysis of existing regulations, case studies of AI implementation, and stakeholder interviews to provide comprehensive insights into effective governance practices.</p>
+				<article class="article-card">
+					<div class="article-image">👁️</div>
+					<div class="article-content">
+						<div class="article-meta">
+							<span class="article-category">Transparency</span>
+							<span class="article-date">Dec 10, 2025</span>
+						</div>
+						<h3 class="article-title">The Right to Explanation: Making AI Decision-Making Transparent</h3>
+						<p class="article-excerpt">As AI systems increasingly influence important decisions, the demand for transparency grows. Examining the technical and ethical challenges of explainable AI.</p>
+						<a href="#" class="read-more">Read Article</a>
 					</div>
-				</div>
-			</div>
-		</section>
+				</article>
 
-		<!-- Newsletter Section -->
-		<section class="newsletter-section">
-			<div class="container">
-				<div class="newsletter-content">
-					<h2>Stay Informed</h2>
-					<p>Subscribe to receive updates on AI governance research, policy developments, and new articles.</p>
-					<form class="newsletter-form">
-						<input type="email" placeholder="Enter your email" required>
-						<button type="submit" class="btn btn-primary">Subscribe</button>
-					</form>
+				<article class="article-card">
+					<div class="article-image">⚡</div>
+					<div class="article-content">
+						<div class="article-meta">
+							<span class="article-category">Impact</span>
+							<span class="article-date">Nov 29, 2025</span>
+						</div>
+						<h3 class="article-title">AI's Environmental Footprint: The Hidden Cost of Progress</h3>
+						<p class="article-excerpt">Training large AI models consumes enormous amounts of energy. How can we reconcile AI advancement with environmental sustainability?</p>
+						<a href="#" class="read-more">Read Article</a>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<!-- Principles Section -->
+	<section id="principles" class="principles fade-in-section">
+		<div class="container">
+			<div class="section-header">
+				<div class="section-label">Foundation</div>
+				<h2 class="section-title">Core Principles of AI Governance</h2>
+				<p class="section-description">The fundamental values that guide responsible AI development and deployment.</p>
+			</div>
+			<div class="principles-grid">
+				<div class="principle-card">
+					<div class="principle-icon">🛡️</div>
+					<h3 class="principle-title">Safety First</h3>
+					<p class="principle-description">AI systems must be designed with robust safety measures to prevent unintended harm and ensure reliable operation in all circumstances.</p>
+				</div>
+
+				<div class="principle-card">
+					<div class="principle-icon">⚖️</div>
+					<h3 class="principle-title">Fairness & Equity</h3>
+					<p class="principle-description">AI must be developed and deployed in ways that promote fairness, reduce bias, and ensure equitable outcomes for all members of society.</p>
+				</div>
+
+				<div class="principle-card">
+					<div class="principle-icon">🔍</div>
+					<h3 class="principle-title">Transparency</h3>
+					<p class="principle-description">The development, deployment, and decision-making processes of AI systems should be open to scrutiny and understandable to stakeholders.</p>
+				</div>
+
+				<div class="principle-card">
+					<div class="principle-icon">👤</div>
+					<h3 class="principle-title">Human Autonomy</h3>
+					<p class="principle-description">AI should augment human capabilities and decision-making rather than replace human agency and responsibility.</p>
+				</div>
+
+				<div class="principle-card">
+					<div class="principle-icon">🔒</div>
+					<h3 class="principle-title">Privacy Protection</h3>
+					<p class="principle-description">AI systems must respect individual privacy rights and handle personal data with the highest standards of security and confidentiality.</p>
+				</div>
+
+				<div class="principle-card">
+					<div class="principle-icon">📊</div>
+					<h3 class="principle-title">Accountability</h3>
+					<p class="principle-description">Clear lines of responsibility must be established for AI systems, with mechanisms for redress when things go wrong.</p>
 				</div>
 			</div>
-		</section>
-	</main>
+		</div>
+	</section>
 
 	<!-- Research Section -->
-	<section class="research-section" id="research">
+	<section id="research" class="fade-in-section">
 		<div class="container">
-			<div class="section-header center">
-				<h2>Research & Publications</h2>
-				<p class="section-subtitle">Ongoing studies and published work on AI governance</p>
+			<div class="section-header">
+				<div class="section-label">Publications</div>
+				<h2 class="section-title">Research & Analysis</h2>
+				<p class="section-description">Academic papers, policy briefs, and in-depth analyses on AI governance challenges.</p>
 			</div>
-			
 			<div class="research-grid">
-				<!-- Research Paper 1 -->
 				<div class="research-card">
-					<div class="research-meta">
-						<span class="research-category">Policy Analysis</span>
-						<span class="research-date">January 2026</span>
-					</div>
-					<h3>Comparative Analysis of EU AI Act vs. US Executive Orders</h3>
-					<p class="research-excerpt">Examining alignment and divergence in regulatory approaches between major economic powers and their implications for global AI governance.</p>
-					<a href="#" class="research-link">View Abstract →</a>
+					<div class="research-year">2025</div>
+					<h3 class="research-title">Governance Frameworks for Large Language Models: A Comparative Analysis</h3>
+					<p class="research-authors">Published in AI & Society Journal</p>
+					<p class="research-summary">This paper examines regulatory approaches to large language models across different jurisdictions, identifying best practices and common challenges in balancing innovation with risk mitigation.</p>
+					<a href="#" class="research-link">View Publication →</a>
 				</div>
-				
-				<!-- Research Paper 2 -->
+
 				<div class="research-card">
-					<div class="research-meta">
-						<span class="research-category">Ethical Framework</span>
-						<span class="research-date">December 2025</span>
-					</div>
-					<h3>Implementing Ethics-by-Design in AI Development</h3>
-					<p class="research-excerpt">Practical guidelines for integrating ethical considerations throughout the AI development lifecycle, from conception to deployment.</p>
-					<a href="#" class="research-link">View Abstract →</a>
+					<div class="research-year">2025</div>
+					<h3 class="research-title">Ethical Considerations in AI-Powered Decision Making</h3>
+					<p class="research-authors">Presented at International AI Ethics Conference</p>
+					<p class="research-summary">An exploration of the moral dimensions of algorithmic decision-making, with particular focus on high-stakes domains such as healthcare, criminal justice, and employment.</p>
+					<a href="#" class="research-link">View Publication →</a>
 				</div>
-				
-				<!-- Research Paper 3 -->
+
 				<div class="research-card">
-					<div class="research-meta">
-						<span class="research-category">Case Study</span>
-						<span class="research-date">November 2025</span>
-					</div>
-					<h3>Healthcare AI Governance: Lessons from Clinical Implementation</h3>
-					<p class="research-excerpt">Analysis of governance challenges and solutions in medical AI applications, focusing on patient safety and data privacy concerns.</p>
-					<a href="#" class="research-link">View Abstract →</a>
+					<div class="research-year">2024</div>
+					<h3 class="research-title">Toward Global AI Governance: Lessons from International Cooperation</h3>
+					<p class="research-authors">Policy Brief for United Nations</p>
+					<p class="research-summary">Drawing on historical examples of international cooperation on technology governance, this brief outlines pathways toward effective global AI governance mechanisms.</p>
+					<a href="#" class="research-link">View Publication →</a>
 				</div>
 			</div>
-			
-			<div class="research-cta">
-				<a href="#" class="btn btn-primary">View All Publications</a>
+		</div>
+	</section>
+
+	<!-- About Section -->
+	<section id="about" class="about fade-in-section">
+		<div class="container">
+			<div class="about-content">
+				<div class="about-image">🧠</div>
+				<div class="about-text">
+					<h3>About This Initiative</h3>
+					<p>AI Governance is an independent research initiative dedicated to exploring the ethical, legal, and policy dimensions of artificial intelligence. We bridge the gap between technical AI development and societal impact, working to ensure that AI systems are developed and deployed in ways that benefit humanity.</p>
+					<p>Our work combines rigorous academic research with practical policy analysis, bringing together perspectives from computer science, philosophy, law, and the social sciences.</p>
+					<div class="expertise-list">
+						<div class="expertise-item">AI Ethics & Values</div>
+						<div class="expertise-item">Policy Analysis</div>
+						<div class="expertise-item">Risk Assessment</div>
+						<div class="expertise-item">Stakeholder Engagement</div>
+						<div class="expertise-item">International Standards</div>
+						<div class="expertise-item">Technical Governance</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Newsletter Section -->
+	<section class="newsletter fade-in-section">
+		<div class="container">
+			<div class="newsletter-content">
+				<h2>Stay Informed</h2>
+				<p>Receive monthly updates on AI governance research, policy developments, and upcoming events.</p>
+				<form class="newsletter-form">
+					<input type="email" placeholder="Enter your email address" required>
+					<button type="submit">Subscribe</button>
+				</form>
 			</div>
 		</div>
 	</section>
 
 	<!-- Contact Section -->
-	<section class="contact-section" id="contact">
-		<div class="container">
-			<div class="section-header center">
-				<h2>Get In Touch</h2>
-				<p class="section-subtitle">Connect for discussions, collaborations, or inquiries about AI governance</p>
+	<section id="contact" class="fade-in-section">
+		<div class="container-narrow">
+			<div class="section-header">
+				<div class="section-label">Get in Touch</div>
+				<h2 class="section-title">Contact Us</h2>
+				<p class="section-description">Have questions about our research or want to collaborate? We'd love to hear from you.</p>
 			</div>
-			
-			<div class="contact-container">
-				<!-- Contact Information -->
+
+			<div class="contact-grid">
 				<div class="contact-info">
-					<div class="info-card">
-						<div class="info-icon">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-								<polyline points="22,6 12,13 2,6"></polyline>
-							</svg>
+					<h3>Contact Information</h3>
+					<div class="contact-item">
+						<div class="contact-icon">📧</div>
+						<div class="contact-details">
+							<h4>Email</h4>
+							<p>info@aigovernance.org</p>
 						</div>
-						<h3>Email</h3>
-						<p><a href="mailto:contact@aigovernance.org">contact@aigovernance.org</a></p>
-						<p class="info-note">Typically respond within 24-48 hours</p>
 					</div>
-					
-					<div class="info-card">
-						<div class="info-icon">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<circle cx="12" cy="12" r="10"></circle>
-								<polyline points="12 6 12 12 16 14"></polyline>
-							</svg>
+					<div class="contact-item">
+						<div class="contact-icon">🌐</div>
+						<div class="contact-details">
+							<h4>Based In</h4>
+							<p>Global Initiative</p>
 						</div>
-						<h3>Response Time</h3>
-						<p>Monday - Friday</p>
-						<p class="info-note">9:00 AM - 5:00 PM EST</p>
 					</div>
-					
-					<div class="info-card">
-						<div class="info-icon">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-								<circle cx="12" cy="10" r="3"></circle>
-							</svg>
+					<div class="contact-item">
+						<div class="contact-icon">⏰</div>
+						<div class="contact-details">
+							<h4>Response Time</h4>
+							<p>24-48 hours</p>
 						</div>
-						<h3>Location</h3>
-						<p>Remote & Global</p>
-						<p class="info-note">Based online with collaborators worldwide</p>
 					</div>
 				</div>
-				
-				<!-- Contact Form -->
-				<div class="contact-form-container">
-					<h3>Send a Message</h3>
-					<form class="contact-form" id="contactForm">
+
+				<div class="contact-form-wrapper">
+					<form id="contactForm">
 						<div class="form-group">
 							<label for="name">Full Name *</label>
-							<input type="text" id="name" name="name" required placeholder="Your name">
+							<input type="text" id="name" name="name" required placeholder="John Doe">
 						</div>
 						
 						<div class="form-group">
@@ -1322,11 +1450,10 @@
 				</div>
 			</div>
 			
-			<!-- Additional Contact Notes -->
 			<div class="contact-notes">
 				<p><strong>For urgent matters:</strong> Please include "URGENT" in your subject line.</p>
 				<p><strong>Research proposals:</strong> Include a brief overview of your project and objectives.</p>
-				<p><strong>Media inquiries:</strong> Contact <a href="mailto:press@aigovernance.org">press@aigovernance.org</a></p>
+				<p><strong>Media inquiries:</strong> Contact media@aigovernance.org</p>
 			</div>
 		</div>
 	</section>
@@ -1358,7 +1485,7 @@
 				</div>
 				<div class="footer-col">
 					<h4>Connect</h4>
-					<p>Email: <a href="mailto:info@aigovernance.org">info@aigovernance.org</a></p>
+					<p>Email: info@aigovernance.org</p>
 					<div class="social-links">
 						<a href="#" aria-label="Twitter">
 							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1392,7 +1519,6 @@
 					this.classList.toggle('active');
 				});
 				
-				// Close menu when clicking on a link
 				const navLinks = document.querySelectorAll('.navbar-links a');
 				navLinks.forEach(link => {
 					link.addEventListener('click', function() {
@@ -1401,7 +1527,6 @@
 					});
 				});
 				
-				// Close menu when clicking outside
 				document.addEventListener('click', function(event) {
 					if (!event.target.closest('.navbar-container')) {
 						navbarLinks.classList.remove('active');
@@ -1432,14 +1557,12 @@
 			contactForm.addEventListener('submit', function(e) {
 				e.preventDefault();
 				
-				// Get form values
 				const name = document.getElementById('name').value;
 				const email = document.getElementById('email').value;
 				const subject = document.getElementById('subject').value;
 				const message = document.getElementById('message').value;
 				const newsletter = document.getElementById('newsletter').checked;
 				
-				// Simple validation
 				if (!name || !email || !message) {
 					alert('Please fill in all required fields (Name, Email, Message)');
 					return;
@@ -1450,23 +1573,18 @@
 					return;
 				}
 				
-				// In a real website, you would send this data to a server
-				// For now, we'll just show a success message
 				const subjectText = subject ? ` (${subject})` : '';
 				const newsletterText = newsletter ? ' You have been subscribed to our newsletter.' : '';
 				
 				alert(`Thank you, ${name}! Your message has been sent.${newsletterText}\n\nWe'll respond to ${email} within 24-48 hours.`);
 				
-				// Reset form
 				contactForm.reset();
 				
-				// Smooth scroll to top of contact section
 				document.querySelector('#contact').scrollIntoView({
 					behavior: 'smooth'
 				});
 			});
 			
-			// Add animation to form elements on focus
 			const formInputs = contactForm.querySelectorAll('input, select, textarea');
 			formInputs.forEach(input => {
 				input.addEventListener('focus', function() {
@@ -1497,43 +1615,34 @@
 			});
 		});
 
-		// Add scroll effect to navbar
-		let lastScroll = 0;
+		// Navbar scroll effect
 		const navbar = document.querySelector('.navbar');
-
 		window.addEventListener('scroll', function() {
 			const currentScroll = window.pageYOffset;
 			
 			if (currentScroll > 100) {
-				navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+				navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
 			} else {
 				navbar.style.boxShadow = 'none';
 			}
-			
-			lastScroll = currentScroll;
 		});
 
 		// Intersection Observer for fade-in animations
 		const observerOptions = {
-			threshold: 0.1,
-			rootMargin: '0px 0px -50px 0px'
+			threshold: 0.15,
+			rootMargin: '0px 0px -100px 0px'
 		};
 
 		const observer = new IntersectionObserver(function(entries) {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
-					entry.target.style.opacity = '1';
-					entry.target.style.transform = 'translateY(0)';
+					entry.target.classList.add('is-visible');
 				}
 			});
 		}, observerOptions);
 
-		// Observe article cards, principle cards, and research cards
-		document.querySelectorAll('.article-card, .principle-card, .research-card').forEach(card => {
-			card.style.opacity = '0';
-			card.style.transform = 'translateY(20px)';
-			card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-			observer.observe(card);
+		document.querySelectorAll('.fade-in-section').forEach(section => {
+			observer.observe(section);
 		});
 
 		// Update active navigation link on scroll
@@ -1545,15 +1654,14 @@
 			sections.forEach(section => {
 				const sectionTop = section.offsetTop;
 				const sectionHeight = section.clientHeight;
-				if (scrollY >= (sectionTop - 100)) {
+				if (window.pageYOffset >= sectionTop - 200) {
 					current = section.getAttribute('id');
 				}
 			});
-
+			
 			navLinks.forEach(link => {
 				link.classList.remove('active');
-				if (link.getAttribute('href') === `#${current}` || 
-					(current === '' && link.getAttribute('href') === 'index.html')) {
+				if (link.getAttribute('href') === '#' + current) {
 					link.classList.add('active');
 				}
 			});
